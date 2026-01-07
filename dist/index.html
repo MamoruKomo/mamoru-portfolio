@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mamoru | Stock-Driven Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <header class="topbar">
+      <div class="logo">
+        <span class="logo-mark">▲</span>
+        <span>Mamoru</span>
+      </div>
+      <nav class="topnav">
+        <button class="nav-link" data-target="intro">Profile</button>
+        <button class="nav-link" data-target="hero">Overview</button>
+        <button class="nav-link" data-target="projects">Case Studies</button>
+        <button class="nav-link" data-target="process">Process</button>
+        <button class="nav-link" data-target="contact">Contact</button>
+      </nav>
+      <div class="status">
+        <span class="dot"></span>
+        <span>Open for collaboration</span>
+      </div>
+    </header>
+
+    <main class="ticker-wrapper">
+      <div class="ticker">
+        <div class="ticker-line">
+          <span>NASDAQ / Portfolio Index</span>
+          <span class="gain">+2.4%</span>
+          <span>YTD: +18.7%</span>
+          <span class="gain">ROI +141%</span>
+          <span>Volatility: 0.62</span>
+          <span class="gain">Momentum: High</span>
+        </div>
+        <div class="ticker-line">
+          <span>NASDAQ / Portfolio Index</span>
+          <span class="gain">+2.4%</span>
+          <span>YTD: +18.7%</span>
+          <span class="gain">ROI +141%</span>
+          <span>Volatility: 0.62</span>
+          <span class="gain">Momentum: High</span>
+        </div>
+      </div>
+    </main>
+
+    <div class="scroll-hint">Scroll →</div>
+
+    <section class="panels" id="panels">
+      <article class="panel intro" data-panel="intro">
+        <div class="panel-header">
+          <h2>Profile Sheet</h2>
+          <p>自己紹介とSNSリンクをまとめています。</p>
+        </div>
+        <div class="intro-card">
+          <div class="intro-photo">
+            
+              <img src="assets/profile.jpg" alt="Mamoru profile" />
+            
+          </div>
+          <div class="intro-info">
+            <div>
+              <p class="label">Name</p>
+              <p class="value">Mamoru</p>
+            </div>
+            <div>
+              <p class="label">Age</p>
+              <p class="value">29</p>
+            </div>
+            <div>
+              <p class="label">Affiliation</p>
+              <p class="value">Freelance / Tokyo</p>
+            </div>
+            <div class="intro-message">
+              <p class="label">One Line</p>
+              <p class="value">市場の波を読み、体験価値を設計します。</p>
+            </div>
+            <div class="intro-links">
+              <p class="label">Social Links</p>
+              <div class="link-list">
+                
+                  <a href="https://x.com/" target="_blank" rel="noopener">
+                    X ↗
+                  </a>
+                
+                  <a href="https://github.com/" target="_blank" rel="noopener">
+                    GitHub ↗
+                  </a>
+                
+                  <a href="https://www.linkedin.com/" target="_blank" rel="noopener">
+                    LinkedIn ↗
+                  </a>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel hero" data-panel="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Return on Design</p>
+          <h1>Stock-Driven Portfolio</h1>
+          <p class="lead">Designing products with market discipline.</p>
+          <div class="stats">
+            
+              <div class="stat">
+                <span class="stat-label">Projects</span>
+                <span class="stat-value">18</span>
+              </div>
+            
+              <div class="stat">
+                <span class="stat-label">Growth</span>
+                <span class="stat-value">+142%</span>
+              </div>
+            
+              <div class="stat">
+                <span class="stat-label">Win Rate</span>
+                <span class="stat-value">61%</span>
+              </div>
+            
+          </div>
+          <button class="cta">Start Analysis →</button>
+        </div>
+        <div class="hero-chart">
+          <svg viewBox="0 0 520 260" aria-hidden="true">
+            <polyline
+              points="20,210 120,180 220,190 320,120 420,130 500,40"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            />
+            <circle cx="320" cy="120" r="6" />
+            <circle cx="500" cy="40" r="6" />
+          </svg>
+          <div class="annotation">
+            <span>2024</span>
+            <p>Breakout year with global launches.</p>
+          </div>
+        </div>
+        <div class="hero-aside">
+          <h3>Core Competencies</h3>
+          
+            <div class="competency">
+              <div>
+                <p>Product Strategy</p>
+                <span>Score 92</span>
+              </div>
+              <span class="change">+2.1%</span>
+            </div>
+          
+            <div class="competency">
+              <div>
+                <p>UX Systems</p>
+                <span>Score 88</span>
+              </div>
+              <span class="change">+1.4%</span>
+            </div>
+          
+            <div class="competency">
+              <div>
+                <p>Frontend</p>
+                <span>Score 84</span>
+              </div>
+              <span class="change">+0.7%</span>
+            </div>
+          
+            <div class="competency">
+              <div>
+                <p>Motion</p>
+                <span>Score 73</span>
+              </div>
+              <span class="change">-0.4%</span>
+            </div>
+          
+          <div class="sentiment">
+            <h4>Market Sentiment</h4>
+            <p>Hireability: Strong Buy</p>
+            <p>Velocity: High</p>
+            <p>Risk: Moderate</p>
+          </div>
+        </div>
+        <div class="hero-timeline">
+          <div class="panel-header compact">
+            <h3>年表チャート</h3>
+            <p>スクロールしてプロジェクトの推移を確認できます。</p>
+          </div>
+          <div class="timeline-chart">
+            <div class="timeline-track">
+              
+                <div class="timeline-point">
+                  <span class="year">2021</span>
+                  <span class="dot"></span>
+                  <div class="timeline-card">
+                    <div class="ticker">AERO</div>
+                    <h4>Flight Ops</h4>
+                    <p>Travel / Ops</p>
+                    <span class="result">+19% throughput</span>
+                  </div>
+                </div>
+              
+                <div class="timeline-point">
+                  <span class="year">2022</span>
+                  <span class="dot"></span>
+                  <div class="timeline-card">
+                    <div class="ticker">CRED</div>
+                    <h4>Trust Wallet</h4>
+                    <p>Fintech / Wallet</p>
+                    <span class="result">-21% drop-off</span>
+                  </div>
+                </div>
+              
+                <div class="timeline-point">
+                  <span class="year">2023</span>
+                  <span class="dot"></span>
+                  <div class="timeline-card">
+                    <div class="ticker">VOLT</div>
+                    <h4>Motion Commerce</h4>
+                    <p>Retail / Video</p>
+                    <span class="result">+27% conversion</span>
+                  </div>
+                </div>
+              
+                <div class="timeline-point">
+                  <span class="year">2024</span>
+                  <span class="dot"></span>
+                  <div class="timeline-card">
+                    <div class="ticker">GROW</div>
+                    <h4>Growth Dashboard</h4>
+                    <p>SaaS / Analytics</p>
+                    <span class="result">+38% activation</span>
+                  </div>
+                </div>
+              
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel projects" data-panel="projects">
+        <div class="panel-header">
+          <h2>Portfolio Watchlist</h2>
+          <p>Selected bets with compounding outcomes.</p>
+        </div>
+        <div class="projects-grid">
+          
+            <a class="project-card" href="#">
+              <div class="project-head">
+                <span class="ticker-badge">GROW</span>
+                <span class="year">2024</span>
+              </div>
+              <h3>Growth Dashboard</h3>
+              <p class="sector">SaaS / Analytics</p>
+              <p class="thesis">LTV and CAC visible in under 5 seconds.</p>
+              <p class="result">+38% activation</p>
+            </a>
+          
+            <a class="project-card" href="#">
+              <div class="project-head">
+                <span class="ticker-badge">VOLT</span>
+                <span class="year">2023</span>
+              </div>
+              <h3>Motion Commerce</h3>
+              <p class="sector">Retail / Video</p>
+              <p class="thesis">Short-form journeys for high-intent buyers.</p>
+              <p class="result">+27% conversion</p>
+            </a>
+          
+            <a class="project-card" href="#">
+              <div class="project-head">
+                <span class="ticker-badge">CRED</span>
+                <span class="year">2022</span>
+              </div>
+              <h3>Trust Wallet</h3>
+              <p class="sector">Fintech / Wallet</p>
+              <p class="thesis">Reduce risk with transparent flows.</p>
+              <p class="result">-21% drop-off</p>
+            </a>
+          
+            <a class="project-card" href="#">
+              <div class="project-head">
+                <span class="ticker-badge">AERO</span>
+                <span class="year">2021</span>
+              </div>
+              <h3>Flight Ops</h3>
+              <p class="sector">Travel / Ops</p>
+              <p class="thesis">Operational clarity for dispatch teams.</p>
+              <p class="result">+19% throughput</p>
+            </a>
+          
+        </div>
+      </article>
+
+      <article class="panel process" data-panel="process">
+        <div class="panel-header">
+          <h2>Process: Market Thesis</h2>
+          <p>株式市場の動きのように、プロジェクトもコンテキストと数値で読み解く設計者です。</p>
+        </div>
+        <div class="process-grid">
+          <div class="process-card">
+            <h3>Research</h3>
+            <p>市場の歪みを探し、ユーザー行動と数字を照合します。</p>
+          </div>
+          <div class="process-card">
+            <h3>Strategy</h3>
+            <p>投資仮説のように、打ち手とリスクを明確にします。</p>
+          </div>
+          <div class="process-card">
+            <h3>Execution</h3>
+            <p>プロトタイプを高速に検証し、勝ち筋を深掘りします。</p>
+          </div>
+          <div class="process-card">
+            <h3>Growth</h3>
+            <p>KPIに合わせて改善し、継続的な成長を実装します。</p>
+          </div>
+        </div>
+        <div class="timeline">
+          
+            <div class="timeline-node">
+              <span class="year">2019</span>
+              <span class="label">Design Degree</span>
+            </div>
+          
+            <div class="timeline-node">
+              <span class="year">2020</span>
+              <span class="label">First Product Launch</span>
+            </div>
+          
+            <div class="timeline-node">
+              <span class="year">2022</span>
+              <span class="label">Lead Designer</span>
+            </div>
+          
+            <div class="timeline-node">
+              <span class="year">2024</span>
+              <span class="label">Global Expansion</span>
+            </div>
+          
+        </div>
+      </article>
+
+      <article class="panel contact" data-panel="contact">
+        <div class="panel-header">
+          <h2>Investor Relations</h2>
+          <p>For collaborations, speaking, or new ventures.</p>
+        </div>
+        <div class="contact-card">
+          <div>
+            <p class="label">Email</p>
+            <p class="value">hello@example.com</p>
+          </div>
+          <div>
+            <p class="label">Location</p>
+            <p class="value">Tokyo / Remote</p>
+          </div>
+          <div>
+            <p class="label">Availability</p>
+            <p class="value">Q3 2025</p>
+          </div>
+          <button class="cta ghost">Download Resume →</button>
+        </div>
+      </article>
+    </section>
+
+    <script src="assets/main.js"></script>
+  </body>
+</html>

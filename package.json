@@ -1,0 +1,13 @@
+{
+  "name": "mamoru-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.js",
+    "dev": "node scripts/build.js --watch"
+  },
+  "dependencies": {
+    "ejs": "^3.1.9"
+  }
+}

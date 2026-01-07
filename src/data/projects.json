@@ -1,0 +1,38 @@
+[
+  {
+    "ticker": "GROW",
+    "name": "Growth Dashboard",
+    "sector": "SaaS / Analytics",
+    "thesis": "LTV and CAC visible in under 5 seconds.",
+    "result": "+38% activation",
+    "year": "2024",
+    "url": "#"
+  },
+  {
+    "ticker": "VOLT",
+    "name": "Motion Commerce",
+    "sector": "Retail / Video",
+    "thesis": "Short-form journeys for high-intent buyers.",
+    "result": "+27% conversion",
+    "year": "2023",
+    "url": "#"
+  },
+  {
+    "ticker": "CRED",
+    "name": "Trust Wallet",
+    "sector": "Fintech / Wallet",
+    "thesis": "Reduce risk with transparent flows.",
+    "result": "-21% drop-off",
+    "year": "2022",
+    "url": "#"
+  },
+  {
+    "ticker": "AERO",
+    "name": "Flight Ops",
+    "sector": "Travel / Ops",
+    "thesis": "Operational clarity for dispatch teams.",
+    "result": "+19% throughput",
+    "year": "2021",
+    "url": "#"
+  }
+]

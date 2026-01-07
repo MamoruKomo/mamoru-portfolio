@@ -1,0 +1,34 @@
+{
+  "name": "Mamoru",
+  "title": "Stock-Driven Portfolio",
+  "tagline": "Designing products with market discipline.",
+  "marketStatus": "Open for collaboration",
+  "stats": [
+    { "label": "Projects", "value": "18" },
+    { "label": "Growth", "value": "+142%" },
+    { "label": "Win Rate", "value": "61%" }
+  ],
+  "competencies": [
+    { "name": "Product Strategy", "score": 92, "change": "+2.1%" },
+    { "name": "UX Systems", "score": 88, "change": "+1.4%" },
+    { "name": "Frontend", "score": 84, "change": "+0.7%" },
+    { "name": "Motion", "score": 73, "change": "-0.4%" }
+  ],
+  "sentiment": {
+    "hireability": "Strong Buy",
+    "velocity": "High",
+    "risk": "Moderate"
+  },
+  "about": "株式市場の動きのように、プロジェクトもコンテキストと数値で読み解く設計者です。",
+  "intro": {
+    "photo": "assets/profile.jpg",
+    "age": "29",
+    "affiliation": "Freelance / Tokyo",
+    "headline": "市場の波を読み、体験価値を設計します。",
+    "links": [
+      { "label": "X", "url": "https://x.com/" },
+      { "label": "GitHub", "url": "https://github.com/" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/" }
+    ]
+  }
+}

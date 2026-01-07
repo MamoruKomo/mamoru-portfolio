@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= site.name %> | <%= site.title %></title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <div class="grain"></div>
+    <header class="topbar">
+      <div class="logo">
+        <span class="logo-mark">▲</span>
+        <span><%= site.name %></span>
+      </div>
+      <nav class="topnav">
+        <button class="nav-link" data-target="intro">Profile</button>
+        <button class="nav-link" data-target="hero">Overview</button>
+        <button class="nav-link" data-target="projects">Case Studies</button>
+        <button class="nav-link" data-target="process">Process</button>
+        <button class="nav-link" data-target="contact">Contact</button>
+      </nav>
+      <div class="status">
+        <span class="dot"></span>
+        <span><%= site.marketStatus %></span>
+      </div>
+    </header>
+
+    <main class="ticker-wrapper">
+      <div class="ticker">
+        <div class="ticker-line">
+          <span>NASDAQ / Portfolio Index</span>
+          <span class="gain">+2.4%</span>
+          <span>YTD: +18.7%</span>
+          <span class="gain">ROI +141%</span>
+          <span>Volatility: 0.62</span>
+          <span class="gain">Momentum: High</span>
+        </div>
+        <div class="ticker-line">
+          <span>NASDAQ / Portfolio Index</span>
+          <span class="gain">+2.4%</span>
+          <span>YTD: +18.7%</span>
+          <span class="gain">ROI +141%</span>
+          <span>Volatility: 0.62</span>
+          <span class="gain">Momentum: High</span>
+        </div>
+      </div>
+    </main>
+
+    <div class="scroll-hint">Scroll →</div>
+
+    <section class="panels" id="panels">
+      <article class="panel intro" data-panel="intro">
+        <div class="panel-header">
+          <h2>Profile Sheet</h2>
+          <p>自己紹介とSNSリンクをまとめています。</p>
+        </div>
+        <div class="intro-card">
+          <div class="intro-photo">
+            <% if (site.intro.photo) { %>
+              <img src="<%= site.intro.photo %>" alt="<%= site.name %> profile" />
+            <% } else { %>
+              <div class="photo-placeholder">No Image</div>
+            <% } %>
+          </div>
+          <div class="intro-info">
+            <div>
+              <p class="label">Name</p>
+              <p class="value"><%= site.name %></p>
+            </div>
+            <div>
+              <p class="label">Age</p>
+              <p class="value"><%= site.intro.age %></p>
+            </div>
+            <div>
+              <p class="label">Affiliation</p>
+              <p class="value"><%= site.intro.affiliation %></p>
+            </div>
+            <div class="intro-message">
+              <p class="label">One Line</p>
+              <p class="value"><%= site.intro.headline %></p>
+            </div>
+            <div class="intro-links">
+              <p class="label">Social Links</p>
+              <div class="link-list">
+                <% site.intro.links.forEach((link) => { %>
+                  <a href="<%= link.url %>" target="_blank" rel="noopener">
+                    <%= link.label %> ↗
+                  </a>
+                <% }) %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel hero" data-panel="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Return on Design</p>
+          <h1><%= site.title %></h1>
+          <p class="lead"><%= site.tagline %></p>
+          <div class="stats">
+            <% site.stats.forEach((stat) => { %>
+              <div class="stat">
+                <span class="stat-label"><%= stat.label %></span>
+                <span class="stat-value"><%= stat.value %></span>
+              </div>
+            <% }) %>
+          </div>
+          <button class="cta">Start Analysis →</button>
+        </div>
+        <div class="hero-chart">
+          <svg viewBox="0 0 520 260" aria-hidden="true">
+            <polyline
+              points="20,210 120,180 220,190 320,120 420,130 500,40"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="3"
+            />
+            <circle cx="320" cy="120" r="6" />
+            <circle cx="500" cy="40" r="6" />
+          </svg>
+          <div class="annotation">
+            <span>2024</span>
+            <p>Breakout year with global launches.</p>
+          </div>
+        </div>
+        <div class="hero-aside">
+          <h3>Core Competencies</h3>
+          <% site.competencies.forEach((comp) => { %>
+            <div class="competency">
+              <div>
+                <p><%= comp.name %></p>
+                <span>Score <%= comp.score %></span>
+              </div>
+              <span class="change"><%= comp.change %></span>
+            </div>
+          <% }) %>
+          <div class="sentiment">
+            <h4>Market Sentiment</h4>
+            <p>Hireability: <%= site.sentiment.hireability %></p>
+            <p>Velocity: <%= site.sentiment.velocity %></p>
+            <p>Risk: <%= site.sentiment.risk %></p>
+          </div>
+        </div>
+        <div class="hero-timeline">
+          <div class="panel-header compact">
+            <h3>年表チャート</h3>
+            <p>スクロールしてプロジェクトの推移を確認できます。</p>
+          </div>
+          <div class="timeline-chart">
+            <div class="timeline-track">
+              <% projects.slice().sort((a, b) => Number(a.year) - Number(b.year)).forEach((project) => { %>
+                <div class="timeline-point">
+                  <span class="year"><%= project.year %></span>
+                  <span class="dot"></span>
+                  <div class="timeline-card">
+                    <div class="ticker"><%= project.ticker %></div>
+                    <h4><%= project.name %></h4>
+                    <p><%= project.sector %></p>
+                    <span class="result"><%= project.result %></span>
+                  </div>
+                </div>
+              <% }) %>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel projects" data-panel="projects">
+        <div class="panel-header">
+          <h2>Portfolio Watchlist</h2>
+          <p>Selected bets with compounding outcomes.</p>
+        </div>
+        <div class="projects-grid">
+          <% projects.forEach((project) => { %>
+            <a class="project-card" href="<%= project.url %>">
+              <div class="project-head">
+                <span class="ticker-badge"><%= project.ticker %></span>
+                <span class="year"><%= project.year %></span>
+              </div>
+              <h3><%= project.name %></h3>
+              <p class="sector"><%= project.sector %></p>
+              <p class="thesis"><%= project.thesis %></p>
+              <p class="result"><%= project.result %></p>
+            </a>
+          <% }) %>
+        </div>
+      </article>
+
+      <article class="panel process" data-panel="process">
+        <div class="panel-header">
+          <h2>Process: Market Thesis</h2>
+          <p><%= site.about %></p>
+        </div>
+        <div class="process-grid">
+          <div class="process-card">
+            <h3>Research</h3>
+            <p>市場の歪みを探し、ユーザー行動と数字を照合します。</p>
+          </div>
+          <div class="process-card">
+            <h3>Strategy</h3>
+            <p>投資仮説のように、打ち手とリスクを明確にします。</p>
+          </div>
+          <div class="process-card">
+            <h3>Execution</h3>
+            <p>プロトタイプを高速に検証し、勝ち筋を深掘りします。</p>
+          </div>
+          <div class="process-card">
+            <h3>Growth</h3>
+            <p>KPIに合わせて改善し、継続的な成長を実装します。</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <% timeline.forEach((node) => { %>
+            <div class="timeline-node">
+              <span class="year"><%= node.year %></span>
+              <span class="label"><%= node.label %></span>
+            </div>
+          <% }) %>
+        </div>
+      </article>
+
+      <article class="panel contact" data-panel="contact">
+        <div class="panel-header">
+          <h2>Investor Relations</h2>
+          <p>For collaborations, speaking, or new ventures.</p>
+        </div>
+        <div class="contact-card">
+          <div>
+            <p class="label">Email</p>
+            <p class="value">hello@example.com</p>
+          </div>
+          <div>
+            <p class="label">Location</p>
+            <p class="value">Tokyo / Remote</p>
+          </div>
+          <div>
+            <p class="label">Availability</p>
+            <p class="value">Q3 2025</p>
+          </div>
+          <button class="cta ghost">Download Resume →</button>
+        </div>
+      </article>
+    </section>
+
+    <script src="assets/main.js"></script>
+  </body>
+</html>
