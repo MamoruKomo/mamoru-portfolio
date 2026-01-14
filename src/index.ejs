@@ -22,7 +22,7 @@
       <nav class="topnav">
         <button class="nav-link" data-target="intro">Profile</button>
         <button class="nav-link" data-target="hero">Overview</button>
-        <button class="nav-link" data-target="projects">Case Studies</button>
+        <button class="nav-link" data-target="timeline">Timeline</button>
         <button class="nav-link" data-target="process">Process</button>
         <button class="nav-link" data-target="contact">Contact</button>
       </nav>
@@ -101,96 +101,101 @@
       </article>
 
       <article class="panel hero" data-panel="hero">
-        <div class="hero-copy">
-          <p class="eyebrow">Return on Design</p>
-          <h1><%= site.title %></h1>
-          <p class="lead"><%= site.tagline %></p>
-          <div class="stats">
-            <% site.stats.forEach((stat) => { %>
-              <div class="stat">
-                <span class="stat-label"><%= stat.label %></span>
-                <span class="stat-value"><%= stat.value %></span>
-              </div>
-            <% }) %>
-          </div>
-          <button class="cta">Start Analysis →</button>
-        </div>
-        <div class="hero-chart">
-          <svg viewBox="0 0 520 260" aria-hidden="true">
-            <polyline
-              points="20,210 120,180 220,190 320,120 420,130 500,40"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="3"
-            />
-            <circle cx="320" cy="120" r="6" />
-            <circle cx="500" cy="40" r="6" />
-          </svg>
-          <div class="annotation">
-            <span>2024</span>
-            <p>Breakout year with global launches.</p>
-          </div>
-        </div>
-        <div class="hero-aside">
-          <h3>Core Competencies</h3>
-          <% site.competencies.forEach((comp) => { %>
-            <div class="competency">
-              <div>
-                <p><%= comp.name %></p>
-                <span>Score <%= comp.score %></span>
-              </div>
-              <span class="change"><%= comp.change %></span>
-            </div>
-          <% }) %>
-          <div class="sentiment">
-            <h4>Market Sentiment</h4>
-            <p>Hireability: <%= site.sentiment.hireability %></p>
-            <p>Velocity: <%= site.sentiment.velocity %></p>
-            <p>Risk: <%= site.sentiment.risk %></p>
-          </div>
-        </div>
-        <div class="hero-timeline">
-          <div class="panel-header compact">
-            <h3>年表チャート</h3>
-            <p>スクロールしてプロジェクトの推移を確認できます。</p>
-          </div>
-          <div class="timeline-chart">
-            <div class="timeline-track">
-              <% projects.slice().sort((a, b) => Number(a.year) - Number(b.year)).forEach((project) => { %>
-                <div class="timeline-point">
-                  <span class="year"><%= project.year %></span>
-                  <span class="dot"></span>
-                  <div class="timeline-card">
-                    <div class="ticker"><%= project.ticker %></div>
-                    <h4><%= project.name %></h4>
-                    <p><%= project.sector %></p>
-                    <span class="result"><%= project.result %></span>
-                  </div>
+        <div class="hero-top">
+          <div class="hero-copy">
+            <p class="eyebrow">Return on Design</p>
+            <h1><%= site.title %></h1>
+            <p class="lead"><%= site.tagline %></p>
+            <div class="stats">
+              <% site.stats.forEach((stat) => { %>
+                <div class="stat">
+                  <span class="stat-label"><%= stat.label %></span>
+                  <span class="stat-value"><%= stat.value %></span>
                 </div>
               <% }) %>
+            </div>
+            <button class="cta">Start Analysis →</button>
+          </div>
+          <div class="hero-chart">
+            <svg viewBox="0 0 520 260" aria-hidden="true">
+              <polyline
+                points="20,210 120,180 220,190 320,120 420,130 500,40"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="3"
+              />
+              <circle cx="320" cy="120" r="6" />
+              <circle cx="500" cy="40" r="6" />
+            </svg>
+            <div class="annotation">
+              <span>2024</span>
+              <p>Breakout year with global launches.</p>
+            </div>
+          </div>
+          <div class="hero-aside">
+            <h3>Core Competencies</h3>
+            <% site.competencies.forEach((comp) => { %>
+              <div class="competency">
+                <div>
+                  <p><%= comp.name %></p>
+                  <span>Score <%= comp.score %></span>
+                </div>
+                <span class="change"><%= comp.change %></span>
+              </div>
+            <% }) %>
+            <div class="sentiment">
+              <h4>Market Sentiment</h4>
+              <p>Hireability: <%= site.sentiment.hireability %></p>
+              <p>Velocity: <%= site.sentiment.velocity %></p>
+              <p>Risk: <%= site.sentiment.risk %></p>
             </div>
           </div>
         </div>
       </article>
 
-      <article class="panel projects" data-panel="projects">
+      <article class="panel timeline-panel" data-panel="timeline">
         <div class="panel-header">
-          <h2>Portfolio Watchlist</h2>
-          <p>Selected bets with compounding outcomes.</p>
+          <h2>Timeline Chart</h2>
+          <p>プロジェクトの推移を年表で確認できます。</p>
         </div>
-        <div class="projects-grid">
-          <% projects.forEach((project) => { %>
-            <a class="project-card" href="<%= project.url %>">
-              <div class="project-head">
-                <span class="ticker-badge"><%= project.ticker %></span>
+        <% const sortedProjects = projects.slice().sort((a, b) => Number(a.year) - Number(b.year)); %>
+        <div class="timeline-chart">
+          <div class="timeline-track">
+            <% sortedProjects.forEach((project) => { %>
+              <button
+                class="timeline-point"
+                type="button"
+                data-ticker="<%= project.ticker %>"
+                data-name="<%= project.name %>"
+                data-sector="<%= project.sector %>"
+                data-thesis="<%= project.thesis %>"
+                data-result="<%= project.result %>"
+                data-year="<%= project.year %>"
+                data-url="<%= project.url %>"
+              >
                 <span class="year"><%= project.year %></span>
-              </div>
-              <h3><%= project.name %></h3>
-              <p class="sector"><%= project.sector %></p>
-              <p class="thesis"><%= project.thesis %></p>
-              <p class="result"><%= project.result %></p>
-            </a>
-          <% }) %>
+                <span class="dot"></span>
+                <div class="timeline-card">
+                  <div class="ticker"><%= project.ticker %></div>
+                  <h4><%= project.name %></h4>
+                  <p><%= project.sector %></p>
+                  <span class="result"><%= project.result %></span>
+                </div>
+              </button>
+            <% }) %>
+          </div>
+        </div>
+        <div class="timeline-detail" id="project-detail">
+          <div>
+            <span class="tag"><%= sortedProjects[0].ticker %> / <%= sortedProjects[0].year %></span>
+            <h4><%= sortedProjects[0].name %></h4>
+            <p class="sector"><%= sortedProjects[0].sector %></p>
+            <p class="thesis"><%= sortedProjects[0].thesis %></p>
+          </div>
+          <div class="detail-meta">
+            <p class="result"><%= sortedProjects[0].result %></p>
+            <a class="detail-link" href="<%= sortedProjects[0].url %>">View Case →</a>
+          </div>
         </div>
       </article>
 

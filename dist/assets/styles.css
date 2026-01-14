@@ -185,11 +185,19 @@ body {
 }
 
 .hero {
-  height: calc(100vh - 120px);
-  grid-template-columns: 1.2fr 0.8fr 0.6fr;
-  align-items: start;
+  min-width: min(98vw, 1500px);
+  height: calc(100vh - 160px);
+  grid-template-rows: auto 1fr;
+  gap: 24px;
   align-content: start;
   overflow-y: auto;
+}
+
+.hero-top {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr 0.7fr;
+  gap: 24px;
+  align-items: start;
 }
 
 .hero-copy h1 {
@@ -265,6 +273,7 @@ body {
   border-radius: 20px;
   padding: 24px;
   position: relative;
+  min-height: 240px;
 }
 
 .hero-chart svg {
@@ -358,11 +367,14 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
   padding: 12px 6px;
   overflow-x: auto;
+  min-height: 220px;
 }
 
 .timeline-track {
   position: relative;
   display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
   gap: 28px;
   align-items: flex-start;
   padding: 12px 24px 28px;
@@ -385,6 +397,13 @@ body {
   display: grid;
   gap: 10px;
   z-index: 1;
+  flex: 0 0 auto;
+  background: transparent;
+  border: none;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
 }
 
 .timeline-point .year {
@@ -409,6 +428,13 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: grid;
   gap: 6px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.timeline-point:hover .timeline-card,
+.timeline-point.is-active .timeline-card {
+  border-color: rgba(60, 255, 133, 0.4);
+  box-shadow: 0 10px 22px rgba(60, 255, 133, 0.18);
 }
 
 .timeline-card .ticker {
@@ -424,6 +450,47 @@ body {
 .timeline-card p {
   font-size: 12px;
   color: var(--muted);
+}
+
+.timeline-detail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px 18px;
+  padding: 16px 20px;
+  border-radius: 16px;
+  background: rgba(16, 19, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.timeline-detail .tag {
+  font-family: "IBM Plex Mono", monospace;
+  color: var(--accent-2);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.timeline-detail h4 {
+  font-size: 20px;
+  margin-top: 6px;
+}
+
+.timeline-detail .detail-meta {
+  display: grid;
+  gap: 8px;
+  justify-items: end;
+}
+
+.timeline-detail .detail-link {
+  color: var(--accent);
+  text-decoration: none;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+}
+
+.timeline-detail .detail-link:hover {
+  color: var(--accent-2);
 }
 
 .projects {
@@ -554,6 +621,10 @@ body {
   overflow-y: auto;
 }
 
+.timeline-panel {
+  grid-template-rows: auto 1fr auto;
+}
+
 .intro-card {
   display: grid;
   grid-template-columns: 0.9fr 1.1fr;
@@ -671,6 +742,10 @@ body {
   }
 
   .hero {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-top {
     grid-template-columns: 1fr;
   }
 
