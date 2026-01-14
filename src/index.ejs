@@ -32,6 +32,51 @@
       </div>
     </header>
 
+    <%
+      const normalizedProjects = projects.map((project) => {
+        const fallbackDate = `${project.year || "2024"}-01-01`;
+        const parsedDate = Date.parse(project.date || fallbackDate);
+        const dateValue = Number.isNaN(parsedDate) ? Date.parse(fallbackDate) : parsedDate;
+        const height = Number(project.height ?? 0);
+        return { ...project, date: project.date || fallbackDate, dateValue, height };
+      });
+      const sortedProjects = normalizedProjects.slice().sort((a, b) => a.dateValue - b.dateValue);
+      const dateValues = sortedProjects.map((project) => project.dateValue);
+      const heightValues = sortedProjects.map((project) => project.height);
+      const minDate = Math.min(...dateValues);
+      const maxDate = Math.max(...dateValues);
+      const minHeight = Math.min(...heightValues);
+      const maxHeight = Math.max(...heightValues);
+      const dateRange = Math.max(1, maxDate - minDate);
+      const heightRange = Math.max(1, maxHeight - minHeight);
+      const chartPadding = 10;
+      const timelinePadding = 12;
+      const skillPalette = ["#4de1ff", "#4bff8f", "#ffd166", "#ff7aa2", "#a5ff7f", "#9a7bff", "#ff9f1c"];
+      const skillSet = new Set();
+      sortedProjects.forEach((project) => {
+        (project.skills || []).forEach((skill) => skillSet.add(skill));
+      });
+      const skillList = Array.from(skillSet);
+      const skillColors = {};
+      skillList.forEach((skill, index) => {
+        skillColors[skill] = skillPalette[index % skillPalette.length];
+      });
+      const chartPoints = sortedProjects.map((project) => {
+        const x = chartPadding + ((project.dateValue - minDate) / dateRange) * (100 - chartPadding * 2);
+        const y = chartPadding + ((maxHeight - project.height) / heightRange) * (100 - chartPadding * 2);
+        const primarySkill = (project.skills && project.skills[0]) || skillList[0] || "General";
+        return { ...project, x, y, primarySkill };
+      });
+      const overviewLinePoints = chartPoints.map((point) => `${point.x.toFixed(2)},${point.y.toFixed(2)}`).join(" ");
+      const timelinePoints = sortedProjects.map((project) => {
+        const x = timelinePadding + ((project.dateValue - minDate) / dateRange) * (100 - timelinePadding * 2);
+        const y = timelinePadding + ((maxHeight - project.height) / heightRange) * (100 - timelinePadding * 2);
+        return { ...project, x, y };
+      });
+      const timelineLinePoints = timelinePoints.map((point) => `${point.x.toFixed(2)},${point.y.toFixed(2)}`).join(" ");
+      const primaryProject = chartPoints[chartPoints.length - 1];
+    %>
+
     <main class="ticker-wrapper">
       <div class="ticker">
         <div class="ticker-line">
@@ -117,19 +162,22 @@
             <button class="cta">Start Analysis →</button>
           </div>
           <div class="hero-chart">
-            <svg viewBox="0 0 520 260" aria-hidden="true">
-              <polyline
-                points="20,210 120,180 220,190 320,120 420,130 500,40"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="3"
-              />
-              <circle cx="320" cy="120" r="6" />
-              <circle cx="500" cy="40" r="6" />
-            </svg>
+            <div class="life-chart life-chart--overview">
+              <div class="life-chart-inner">
+                <svg class="life-chart-svg" viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none">
+                  <polyline class="chart-line" points="<%= overviewLinePoints %>" fill="none" />
+                </svg>
+                <% chartPoints.forEach((point) => { %>
+                  <span
+                    class="chart-dot chart-dot--overview"
+                    style="--x: <%= point.x.toFixed(2) %>; --y: <%= point.y.toFixed(2) %>;"
+                  ></span>
+                <% }) %>
+              </div>
+            </div>
             <div class="annotation">
-              <span>2024</span>
-              <p>Breakout year with global launches.</p>
+              <span><%= primaryProject.date %></span>
+              <p><%= primaryProject.name %> reached <%= primaryProject.height %>.</p>
             </div>
           </div>
           <div class="hero-aside">
@@ -158,43 +206,42 @@
           <h2>Timeline Chart</h2>
           <p>プロジェクトの推移を年表で確認できます。</p>
         </div>
-        <% const sortedProjects = projects.slice().sort((a, b) => Number(a.year) - Number(b.year)); %>
         <div class="timeline-chart">
-          <div class="timeline-track">
-            <% sortedProjects.forEach((project) => { %>
-              <button
-                class="timeline-point"
-                type="button"
-                data-ticker="<%= project.ticker %>"
-                data-name="<%= project.name %>"
-                data-sector="<%= project.sector %>"
-                data-thesis="<%= project.thesis %>"
-                data-result="<%= project.result %>"
-                data-year="<%= project.year %>"
-                data-url="<%= project.url %>"
-              >
-                <span class="year"><%= project.year %></span>
-                <span class="dot"></span>
-                <div class="timeline-card">
-                  <div class="ticker"><%= project.ticker %></div>
-                  <h4><%= project.name %></h4>
-                  <p><%= project.sector %></p>
-                  <span class="result"><%= project.result %></span>
-                </div>
-              </button>
-            <% }) %>
-          </div>
-        </div>
-        <div class="timeline-detail" id="project-detail">
-          <div>
-            <span class="tag"><%= sortedProjects[0].ticker %> / <%= sortedProjects[0].year %></span>
-            <h4><%= sortedProjects[0].name %></h4>
-            <p class="sector"><%= sortedProjects[0].sector %></p>
-            <p class="thesis"><%= sortedProjects[0].thesis %></p>
-          </div>
-          <div class="detail-meta">
-            <p class="result"><%= sortedProjects[0].result %></p>
-            <a class="detail-link" href="<%= sortedProjects[0].url %>">View Case →</a>
+          <div class="life-chart life-chart--timeline">
+            <div class="life-chart-inner">
+              <svg class="life-chart-svg" viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none">
+                <polyline class="chart-line" points="<%= timelineLinePoints %>" fill="none" />
+              </svg>
+              <% timelinePoints.forEach((point) => { %>
+                <span
+                  class="chart-dot chart-dot--timeline"
+                  style="--x: <%= point.x.toFixed(2) %>; --y: <%= point.y.toFixed(2) %>;"
+                ></span>
+              <% }) %>
+              <% timelinePoints.forEach((point) => { %>
+                <button
+                  class="chart-point <%= point.y < 18 ? "is-top" : "" %>"
+                  type="button"
+                  data-url="<%= point.url %>"
+                  style="--x: <%= point.x.toFixed(2) %>; --y: <%= point.y.toFixed(2) %>;"
+                >
+                  <div class="chart-card">
+                    <span class="chart-date"><%= point.date %></span>
+                    <h4><%= point.name %></h4>
+                    <div class="chart-skills">
+                      <% (point.skills || []).forEach((skill) => { %>
+                        <div class="chart-skill">
+                          <span class="skill-name"><%= skill %></span>
+                          <span class="skill-gain"><%= point.skillGains && point.skillGains[skill] ? point.skillGains[skill] : "" %></span>
+                        </div>
+                      <% }) %>
+                    </div>
+                    <span class="chart-result"><%= point.result %></span>
+                    <a class="chart-link" href="<%= point.url %>" target="_blank" rel="noopener">View More →</a>
+                  </div>
+                </button>
+              <% }) %>
+            </div>
           </div>
         </div>
       </article>

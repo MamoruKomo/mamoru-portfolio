@@ -276,14 +276,32 @@ body {
   min-height: 240px;
 }
 
-.hero-chart svg {
+.life-chart {
+  position: relative;
   width: 100%;
-  height: 200px;
-  color: var(--accent);
+  border-radius: 16px;
+  background: rgba(8, 10, 14, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.hero-chart circle {
-  fill: var(--accent-2);
+.life-chart-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  color: var(--accent);
+  z-index: 1;
+}
+
+.life-chart-svg .chart-line {
+  stroke: rgba(60, 255, 133, 0.9);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.life-chart--overview {
+  height: 190px;
 }
 
 .annotation {
@@ -365,133 +383,132 @@ body {
   background: var(--panel-strong);
   border-radius: 18px;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 12px 6px;
+  padding: 16px;
   overflow-x: auto;
-  min-height: 220px;
+  min-height: 420px;
 }
 
-.timeline-track {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 28px;
-  align-items: flex-start;
-  padding: 12px 24px 28px;
-  min-width: 820px;
+.life-chart--timeline {
+  height: 360px;
+  min-width: 760px;
+  padding: 12px;
+  overflow: hidden;
 }
 
-.timeline-track::before {
-  content: "";
+.life-chart-inner {
   position: absolute;
-  left: 24px;
-  right: 24px;
-  top: 46px;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(60, 255, 133, 0.15), rgba(60, 199, 255, 0.7), rgba(60, 255, 133, 0.15));
+  inset: 16px;
 }
 
-.timeline-point {
-  position: relative;
-  min-width: 180px;
-  display: grid;
-  gap: 10px;
-  z-index: 1;
-  flex: 0 0 auto;
+.life-chart--timeline .life-chart-svg {
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.life-chart--timeline .chart-line {
+  stroke-width: 0.9;
+}
+
+.chart-point {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  width: 0;
+  height: 0;
+  transform: translate(-50%, -50%);
   background: transparent;
   border: none;
   color: inherit;
-  text-align: left;
   cursor: pointer;
   padding: 0;
 }
 
-.timeline-point .year {
-  font-family: "IBM Plex Mono", monospace;
-  color: var(--accent-2);
-  font-size: 12px;
-  letter-spacing: 0.12em;
+.chart-point.is-top {
+  transform: translate(-50%, -50%);
 }
 
-.timeline-point .dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 12px rgba(60, 255, 133, 0.5);
-}
-
-.timeline-card {
-  padding: 12px 14px;
-  border-radius: 14px;
-  background: rgba(16, 19, 25, 0.8);
+.chart-card {
+  min-width: 180px;
+  max-width: 220px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(16, 19, 25, 0.88);
   border: 1px solid rgba(255, 255, 255, 0.08);
   display: grid;
   gap: 6px;
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  text-align: left;
+  font-size: 11px;
+  color: var(--muted);
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(-50%, calc(-100% - 14px));
 }
 
-.timeline-point:hover .timeline-card,
-.timeline-point.is-active .timeline-card {
+.chart-point.is-active .chart-card {
   border-color: rgba(60, 255, 133, 0.4);
   box-shadow: 0 10px 22px rgba(60, 255, 133, 0.18);
 }
 
-.timeline-card .ticker {
+.chart-point.is-top .chart-card {
+  transform: translate(-50%, 18px);
+}
+
+.life-chart--timeline .life-chart-inner {
+  inset: 12px;
+}
+
+.chart-date {
   font-family: "IBM Plex Mono", monospace;
-  font-size: 11px;
-  color: var(--accent);
-}
-
-.timeline-card h4 {
-  font-size: 15px;
-}
-
-.timeline-card p {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.timeline-detail {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 12px 18px;
-  padding: 16px 20px;
-  border-radius: 16px;
-  background: rgba(16, 19, 25, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.timeline-detail .tag {
-  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
   color: var(--accent-2);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
 }
 
-.timeline-detail h4 {
-  font-size: 20px;
-  margin-top: 6px;
+.chart-card h4 {
+  font-size: 13px;
+  color: var(--text);
 }
 
-.timeline-detail .detail-meta {
+.chart-skills {
   display: grid;
-  gap: 8px;
-  justify-items: end;
+  gap: 4px;
 }
 
-.timeline-detail .detail-link {
+.chart-skill {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.chart-skill .skill-name {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.chart-skill .skill-gain {
   color: var(--accent);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 10px;
+}
+
+.chart-result {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.chart-link {
+  color: var(--accent-2);
   text-decoration: none;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 13px;
+  font-size: 11px;
 }
 
-.timeline-detail .detail-link:hover {
-  color: var(--accent-2);
+.chart-link:hover {
+  color: var(--accent);
 }
+
 
 .projects {
   grid-template-rows: auto 1fr;
@@ -638,20 +655,22 @@ body {
 }
 
 .intro-photo {
-  width: 100%;
+  width: clamp(200px, 70%, 280px);
   aspect-ratio: 3 / 4;
   border-radius: 18px;
   overflow: hidden;
   background: rgba(16, 19, 25, 0.7);
   display: grid;
   place-items: center;
+  justify-self: center;
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .intro-photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .photo-placeholder {
@@ -756,4 +775,24 @@ body {
   .scroll-hint {
     display: none;
   }
+}
+.chart-dot {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-2);
+  box-shadow: 0 0 10px rgba(77, 225, 255, 0.45);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.chart-dot--timeline {
+  width: 12px;
+  height: 12px;
+  background: var(--accent);
+  box-shadow: 0 0 12px rgba(60, 255, 133, 0.55);
 }

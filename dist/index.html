@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mamoru | Stock-Driven Portfolio</title>
+    <title>Komoda Mamoru | Stock-Driven Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,7 +17,7 @@
     <header class="topbar">
       <div class="logo">
         <span class="logo-mark">▲</span>
-        <span>Mamoru</span>
+        <span>Komoda Mamoru</span>
       </div>
       <nav class="topnav">
         <button class="nav-link" data-target="intro">Profile</button>
@@ -31,6 +31,8 @@
         <span>Open for collaboration</span>
       </div>
     </header>
+
+    
 
     <main class="ticker-wrapper">
       <div class="ticker">
@@ -64,21 +66,21 @@
         <div class="intro-card">
           <div class="intro-photo">
             
-              <img src="assets/profile.jpg" alt="Mamoru profile" />
+              <img src="assets/mamorudesu.jpeg" alt="Komoda Mamoru profile" />
             
           </div>
           <div class="intro-info">
             <div>
               <p class="label">Name</p>
-              <p class="value">Mamoru</p>
+              <p class="value">Komoda Mamoru</p>
             </div>
             <div>
               <p class="label">Age</p>
-              <p class="value">29</p>
+              <p class="value">18</p>
             </div>
             <div>
               <p class="label">Affiliation</p>
-              <p class="value">Freelance / Tokyo</p>
+              <p class="value">神山まるごと高専 / Tokushima</p>
             </div>
             <div class="intro-message">
               <p class="label">One Line</p>
@@ -88,16 +90,20 @@
               <p class="label">Social Links</p>
               <div class="link-list">
                 
-                  <a href="https://x.com/" target="_blank" rel="noopener">
+                  <a href="https://x.com/kmc_mamo" target="_blank" rel="noopener">
                     X ↗
                   </a>
                 
-                  <a href="https://github.com/" target="_blank" rel="noopener">
+                  <a href="https://github.com/MamoruKomo" target="_blank" rel="noopener">
                     GitHub ↗
                   </a>
                 
-                  <a href="https://www.linkedin.com/" target="_blank" rel="noopener">
+                  <a href="https://www.linkedin.com/in/%E8%91%B5-%E8%96%A6%E7%94%B0-110129273/" target="_blank" rel="noopener">
                     LinkedIn ↗
+                  </a>
+                
+                  <a href="https://www.facebook.com/people/%E8%96%A6%E7%94%B0%E8%91%B5/pfbid02oZouFt6x1Pc5sdFpv13WgRRaoescFHFJGYpAUvnnSLQQE84AC6Z7HnuRCqEcPdKNl/" target="_blank" rel="noopener">
+                    Facebook ↗
                   </a>
                 
               </div>
@@ -133,19 +139,37 @@
             <button class="cta">Start Analysis →</button>
           </div>
           <div class="hero-chart">
-            <svg viewBox="0 0 520 260" aria-hidden="true">
-              <polyline
-                points="20,210 120,180 220,190 320,120 420,130 500,40"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="3"
-              />
-              <circle cx="320" cy="120" r="6" />
-              <circle cx="500" cy="40" r="6" />
-            </svg>
+            <div class="life-chart life-chart--overview">
+              <div class="life-chart-inner">
+                <svg class="life-chart-svg" viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none">
+                  <polyline class="chart-line" points="10.00,90.00 29.51,66.00 60.26,38.00 90.00,10.00" fill="none" />
+                </svg>
+                
+                  <span
+                    class="chart-dot chart-dot--overview"
+                    style="--x: 10.00; --y: 90.00;"
+                  ></span>
+                
+                  <span
+                    class="chart-dot chart-dot--overview"
+                    style="--x: 29.51; --y: 66.00;"
+                  ></span>
+                
+                  <span
+                    class="chart-dot chart-dot--overview"
+                    style="--x: 60.26; --y: 38.00;"
+                  ></span>
+                
+                  <span
+                    class="chart-dot chart-dot--overview"
+                    style="--x: 90.00; --y: 10.00;"
+                  ></span>
+                
+              </div>
+            </div>
             <div class="annotation">
-              <span>2024</span>
-              <p>Breakout year with global launches.</p>
+              <span>2024-10-01</span>
+              <p>Growth Dashboard reached 86.</p>
             </div>
           </div>
           <div class="hero-aside">
@@ -198,106 +222,153 @@
           <h2>Timeline Chart</h2>
           <p>プロジェクトの推移を年表で確認できます。</p>
         </div>
-        
         <div class="timeline-chart">
-          <div class="timeline-track">
-            
-              <button
-                class="timeline-point"
-                type="button"
-                data-ticker="AERO"
-                data-name="Flight Ops"
-                data-sector="Travel / Ops"
-                data-thesis="Operational clarity for dispatch teams."
-                data-result="+19% throughput"
-                data-year="2021"
-                data-url="#"
-              >
-                <span class="year">2021</span>
-                <span class="dot"></span>
-                <div class="timeline-card">
-                  <div class="ticker">AERO</div>
-                  <h4>Flight Ops</h4>
-                  <p>Travel / Ops</p>
-                  <span class="result">+19% throughput</span>
-                </div>
-              </button>
-            
-              <button
-                class="timeline-point"
-                type="button"
-                data-ticker="CRED"
-                data-name="Trust Wallet"
-                data-sector="Fintech / Wallet"
-                data-thesis="Reduce risk with transparent flows."
-                data-result="-21% drop-off"
-                data-year="2022"
-                data-url="#"
-              >
-                <span class="year">2022</span>
-                <span class="dot"></span>
-                <div class="timeline-card">
-                  <div class="ticker">CRED</div>
-                  <h4>Trust Wallet</h4>
-                  <p>Fintech / Wallet</p>
-                  <span class="result">-21% drop-off</span>
-                </div>
-              </button>
-            
-              <button
-                class="timeline-point"
-                type="button"
-                data-ticker="VOLT"
-                data-name="Motion Commerce"
-                data-sector="Retail / Video"
-                data-thesis="Short-form journeys for high-intent buyers."
-                data-result="+27% conversion"
-                data-year="2023"
-                data-url="#"
-              >
-                <span class="year">2023</span>
-                <span class="dot"></span>
-                <div class="timeline-card">
-                  <div class="ticker">VOLT</div>
-                  <h4>Motion Commerce</h4>
-                  <p>Retail / Video</p>
-                  <span class="result">+27% conversion</span>
-                </div>
-              </button>
-            
-              <button
-                class="timeline-point"
-                type="button"
-                data-ticker="GROW"
-                data-name="Growth Dashboard"
-                data-sector="SaaS / Analytics"
-                data-thesis="LTV and CAC visible in under 5 seconds."
-                data-result="+38% activation"
-                data-year="2024"
-                data-url="#"
-              >
-                <span class="year">2024</span>
-                <span class="dot"></span>
-                <div class="timeline-card">
-                  <div class="ticker">GROW</div>
-                  <h4>Growth Dashboard</h4>
-                  <p>SaaS / Analytics</p>
-                  <span class="result">+38% activation</span>
-                </div>
-              </button>
-            
-          </div>
-        </div>
-        <div class="timeline-detail" id="project-detail">
-          <div>
-            <span class="tag">AERO / 2021</span>
-            <h4>Flight Ops</h4>
-            <p class="sector">Travel / Ops</p>
-            <p class="thesis">Operational clarity for dispatch teams.</p>
-          </div>
-          <div class="detail-meta">
-            <p class="result">+19% throughput</p>
-            <a class="detail-link" href="#">View Case →</a>
+          <div class="life-chart life-chart--timeline">
+            <div class="life-chart-inner">
+              <svg class="life-chart-svg" viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none">
+                <polyline class="chart-line" points="12.00,88.00 30.54,65.20 59.75,38.60 88.00,12.00" fill="none" />
+              </svg>
+              
+                <span
+                  class="chart-dot chart-dot--timeline"
+                  style="--x: 12.00; --y: 88.00;"
+                ></span>
+              
+                <span
+                  class="chart-dot chart-dot--timeline"
+                  style="--x: 30.54; --y: 65.20;"
+                ></span>
+              
+                <span
+                  class="chart-dot chart-dot--timeline"
+                  style="--x: 59.75; --y: 38.60;"
+                ></span>
+              
+                <span
+                  class="chart-dot chart-dot--timeline"
+                  style="--x: 88.00; --y: 12.00;"
+                ></span>
+              
+              
+                <button
+                  class="chart-point "
+                  type="button"
+                  data-url="#"
+                  style="--x: 12.00; --y: 88.00;"
+                >
+                  <div class="chart-card">
+                    <span class="chart-date">2021-04-05</span>
+                    <h4>Flight Ops</h4>
+                    <div class="chart-skills">
+                      
+                        <div class="chart-skill">
+                          <span class="skill-name">UX Systems</span>
+                          <span class="skill-gain">+2</span>
+                        </div>
+                      
+                        <div class="chart-skill">
+                          <span class="skill-name">Research</span>
+                          <span class="skill-gain">+4</span>
+                        </div>
+                      
+                    </div>
+                    <span class="chart-result">+19% throughput</span>
+                    <a class="chart-link" href="#" target="_blank" rel="noopener">View More →</a>
+                  </div>
+                </button>
+              
+                <button
+                  class="chart-point "
+                  type="button"
+                  data-url="#"
+                  style="--x: 30.54; --y: 65.20;"
+                >
+                  <div class="chart-card">
+                    <span class="chart-date">2022-02-10</span>
+                    <h4>Trust Wallet</h4>
+                    <div class="chart-skills">
+                      
+                        <div class="chart-skill">
+                          <span class="skill-name">UX Systems</span>
+                          <span class="skill-gain">+3</span>
+                        </div>
+                      
+                        <div class="chart-skill">
+                          <span class="skill-name">Product Strategy</span>
+                          <span class="skill-gain">+1</span>
+                        </div>
+                      
+                    </div>
+                    <span class="chart-result">-21% drop-off</span>
+                    <a class="chart-link" href="#" target="_blank" rel="noopener">View More →</a>
+                  </div>
+                </button>
+              
+                <button
+                  class="chart-point "
+                  type="button"
+                  data-url="#"
+                  style="--x: 59.75; --y: 38.60;"
+                >
+                  <div class="chart-card">
+                    <span class="chart-date">2023-06-15</span>
+                    <h4>Motion Commerce</h4>
+                    <div class="chart-skills">
+                      
+                        <div class="chart-skill">
+                          <span class="skill-name">Motion</span>
+                          <span class="skill-gain">+5</span>
+                        </div>
+                      
+                        <div class="chart-skill">
+                          <span class="skill-name">Frontend</span>
+                          <span class="skill-gain">+2</span>
+                        </div>
+                      
+                        <div class="chart-skill">
+                          <span class="skill-name">UX Systems</span>
+                          <span class="skill-gain">+2</span>
+                        </div>
+                      
+                    </div>
+                    <span class="chart-result">+27% conversion</span>
+                    <a class="chart-link" href="#" target="_blank" rel="noopener">View More →</a>
+                  </div>
+                </button>
+              
+                <button
+                  class="chart-point is-top"
+                  type="button"
+                  data-url="#"
+                  style="--x: 88.00; --y: 12.00;"
+                >
+                  <div class="chart-card">
+                    <span class="chart-date">2024-10-01</span>
+                    <h4>Growth Dashboard</h4>
+                    <div class="chart-skills">
+                      
+                        <div class="chart-skill">
+                          <span class="skill-name">Product Strategy</span>
+                          <span class="skill-gain">+3</span>
+                        </div>
+                      
+                        <div class="chart-skill">
+                          <span class="skill-name">UX Systems</span>
+                          <span class="skill-gain">+4</span>
+                        </div>
+                      
+                        <div class="chart-skill">
+                          <span class="skill-name">Frontend</span>
+                          <span class="skill-gain">+2</span>
+                        </div>
+                      
+                    </div>
+                    <span class="chart-result">+38% activation</span>
+                    <a class="chart-link" href="#" target="_blank" rel="noopener">View More →</a>
+                  </div>
+                </button>
+              
+            </div>
           </div>
         </div>
       </article>

@@ -1,5 +1,5 @@
 {
-  "name": "Mamoru",
+  "name": "Komoda Mamoru",
   "title": "Stock-Driven Portfolio",
   "tagline": "Designing products with market discipline.",
   "marketStatus": "Open for collaboration",
@@ -21,14 +21,15 @@
   },
   "about": "株式市場の動きのように、プロジェクトもコンテキストと数値で読み解く設計者です。",
   "intro": {
-    "photo": "assets/profile.jpg",
-    "age": "29",
-    "affiliation": "Freelance / Tokyo",
+    "photo": "assets/mamorudesu.jpeg",
+    "age": "18",
+    "affiliation": "神山まるごと高専 / Tokushima",
     "headline": "市場の波を読み、体験価値を設計します。",
     "links": [
-      { "label": "X", "url": "https://x.com/" },
-      { "label": "GitHub", "url": "https://github.com/" },
-      { "label": "LinkedIn", "url": "https://www.linkedin.com/" }
+      { "label": "X", "url": "https://x.com/kmc_mamo" },
+      { "label": "GitHub", "url": "https://github.com/MamoruKomo" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/%E8%91%B5-%E8%96%A6%E7%94%B0-110129273/" },
+      { "label": "Facebook", "url": "https://www.facebook.com/people/%E8%96%A6%E7%94%B0%E8%91%B5/pfbid02oZouFt6x1Pc5sdFpv13WgRRaoescFHFJGYpAUvnnSLQQE84AC6Z7HnuRCqEcPdKNl/" }
     ]
   }
 }

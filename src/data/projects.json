@@ -5,6 +5,14 @@
     "sector": "SaaS / Analytics",
     "thesis": "LTV and CAC visible in under 5 seconds.",
     "result": "+38% activation",
+    "date": "2024-10-01",
+    "height": 86,
+    "skills": ["Product Strategy", "UX Systems", "Frontend"],
+    "skillGains": {
+      "Product Strategy": "+3",
+      "UX Systems": "+4",
+      "Frontend": "+2"
+    },
     "year": "2024",
     "url": "#"
   },
@@ -14,6 +22,14 @@
     "sector": "Retail / Video",
     "thesis": "Short-form journeys for high-intent buyers.",
     "result": "+27% conversion",
+    "date": "2023-06-15",
+    "height": 72,
+    "skills": ["Motion", "Frontend", "UX Systems"],
+    "skillGains": {
+      "Motion": "+5",
+      "Frontend": "+2",
+      "UX Systems": "+2"
+    },
     "year": "2023",
     "url": "#"
   },
@@ -23,6 +39,13 @@
     "sector": "Fintech / Wallet",
     "thesis": "Reduce risk with transparent flows.",
     "result": "-21% drop-off",
+    "date": "2022-02-10",
+    "height": 58,
+    "skills": ["UX Systems", "Product Strategy"],
+    "skillGains": {
+      "UX Systems": "+3",
+      "Product Strategy": "+1"
+    },
     "year": "2022",
     "url": "#"
   },
@@ -32,6 +55,13 @@
     "sector": "Travel / Ops",
     "thesis": "Operational clarity for dispatch teams.",
     "result": "+19% throughput",
+    "date": "2021-04-05",
+    "height": 46,
+    "skills": ["UX Systems", "Research"],
+    "skillGains": {
+      "UX Systems": "+2",
+      "Research": "+4"
+    },
     "year": "2021",
     "url": "#"
   }

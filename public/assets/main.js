@@ -1,8 +1,7 @@
 const panels = document.querySelector(".panels");
 const navLinks = document.querySelectorAll(".nav-link");
 const panelItems = document.querySelectorAll("[data-panel]");
-const projectPoints = document.querySelectorAll(".timeline-point");
-const projectDetail = document.querySelector("#project-detail");
+const projectPoints = document.querySelectorAll(".chart-point");
 
 function setActive(targetId) {
   navLinks.forEach((link) => {
@@ -56,28 +55,12 @@ if (introTarget) {
   setActive("intro");
 }
 
-function updateProjectDetail(point) {
-  if (!projectDetail || !point) return;
-  const { ticker, name, sector, thesis, result, year, url } = point.dataset;
-  projectDetail.innerHTML = `
-    <div>
-      <span class="tag">${ticker} / ${year}</span>
-      <h4>${name}</h4>
-      <p class="sector">${sector}</p>
-      <p class="thesis">${thesis}</p>
-    </div>
-    <div class="detail-meta">
-      <p class="result">${result}</p>
-      <a class="detail-link" href="${url}">View Case →</a>
-    </div>
-  `;
-  projectPoints.forEach((node) => node.classList.remove("is-active"));
-  point.classList.add("is-active");
-}
-
 if (projectPoints.length) {
-  updateProjectDetail(projectPoints[0]);
+  projectPoints[0].classList.add("is-active");
   projectPoints.forEach((point) => {
-    point.addEventListener("click", () => updateProjectDetail(point));
+    point.addEventListener("click", () => {
+      projectPoints.forEach((node) => node.classList.remove("is-active"));
+      point.classList.add("is-active");
+    });
   });
 }
