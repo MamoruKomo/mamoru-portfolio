@@ -39,15 +39,9 @@ function onScroll() {
 if (panels) {
   panels.addEventListener("scroll", onScroll);
 
-  panels.addEventListener("wheel", (event) => {
-    if (Math.abs(event.deltaY) > Math.abs(event.deltaX)) {
-      event.preventDefault();
-      panels.scrollLeft += event.deltaY * 1.2;
-    }
-  }, { passive: false });
 }
 
-setActive("hero");
+setActive("intro");
 
 const introTarget = document.querySelector("[data-panel=\"intro\"]");
 if (introTarget) {

@@ -1,23 +1,24 @@
 {
   "name": "Komoda Mamoru",
-  "title": "Stock-Driven Portfolio",
-  "tagline": "Designing products with market discipline.",
+  "title": "実績で語るポートフォリオ",
+  "tagline": "数字と文脈で、価値のある体験を設計します。",
+  "overviewSummary": "派手な数値よりも、課題の整理・仮説設計・検証の積み重ねを大切にしています。",
   "marketStatus": "Open for collaboration",
   "stats": [
-    { "label": "Projects", "value": "18" },
-    { "label": "Growth", "value": "+142%" },
-    { "label": "Win Rate", "value": "61%" }
+    { "label": "プロジェクト数", "value": "18" },
+    { "label": "成長率", "value": "+142%" },
+    { "label": "成功率", "value": "61%" }
   ],
   "competencies": [
-    { "name": "Product Strategy", "score": 92, "change": "+2.1%" },
-    { "name": "UX Systems", "score": 88, "change": "+1.4%" },
-    { "name": "Frontend", "score": 84, "change": "+0.7%" },
-    { "name": "Motion", "score": 73, "change": "-0.4%" }
+    { "name": "戦略設計", "score": 92, "change": "+2.1%" },
+    { "name": "UX設計", "score": 88, "change": "+1.4%" },
+    { "name": "フロントエンド", "score": 84, "change": "+0.7%" },
+    { "name": "モーション", "score": 73, "change": "-0.4%" }
   ],
   "sentiment": {
-    "hireability": "Strong Buy",
-    "velocity": "High",
-    "risk": "Moderate"
+    "hireability": "前向き",
+    "velocity": "速い",
+    "risk": "中程度"
   },
   "about": "株式市場の動きのように、プロジェクトもコンテキストと数値で読み解く設計者です。",
   "intro": {
@@ -25,6 +26,15 @@
     "age": "18",
     "affiliation": "神山まるごと高専 / Tokushima",
     "headline": "市場の波を読み、体験価値を設計します。",
+    "valueProposition": "ユーザー理解と事業目線をつなぎ、継続的に価値を伸ばす設計を行います。",
+    "skills": [
+      "デザイン",
+      "エンジニアリング",
+      "サービスデザイン",
+      "AR",
+      "Web",
+      "イベント制作"
+    ],
     "links": [
       { "label": "X", "url": "https://x.com/kmc_mamo" },
       { "label": "GitHub", "url": "https://github.com/MamoruKomo" },
