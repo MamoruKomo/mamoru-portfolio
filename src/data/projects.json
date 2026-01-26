@@ -2,7 +2,9 @@
   "_note": "Project list for Activities and Timeline. Edit items only.",
   "items": [
     {
+      "id": "comora",
       "ticker": "comora",
+      "market": "Local",
       "name": "綿飴屋comora",
       "sector": "Small Business / 町おこし",
       "thesis": "LTV and CAC visible in under 5 seconds.",
@@ -23,6 +25,7 @@
       "year": "2024"
     },
     {
+      "id": "motion-commerce",
       "ticker": "VOLT",
       "market": "Retail",
       "name": "Motion Commerce",
@@ -45,6 +48,7 @@
       "year": "2023"
     },
     {
+      "id": "trust-wallet",
       "ticker": "CRED",
       "market": "Fintech",
       "name": "Trust Wallet",
@@ -66,6 +70,7 @@
       "year": "2022"
     },
     {
+      "id": "flight-ops",
       "ticker": "AERO",
       "market": "Travel",
       "name": "Flight Ops",
