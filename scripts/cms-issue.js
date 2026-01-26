@@ -77,10 +77,7 @@ function parseValue(raw) {
   return trimmed;
 }
 
-function parseYamlBlock(bodyText) {
-  const match = bodyText.match(/```yaml\s*([\s\S]*?)```/i);
-  if (!match) return null;
-  const lines = match[1].split(/\r?\n/);
+function parseYamlLines(lines) {
   const result = {};
   let inChanges = false;
   let current = null;
@@ -116,6 +113,15 @@ function parseYamlBlock(bodyText) {
     }
   }
   return result;
+}
+
+function parseYamlBlock(bodyText) {
+  const match = bodyText.match(/```yaml\s*([\s\S]*?)```/i);
+  if (match) {
+    return parseYamlLines(match[1].split(/\r?\n/));
+  }
+  if (!/CMS_UPDATE\s*:/i.test(bodyText)) return null;
+  return parseYamlLines(bodyText.split(/\r?\n/));
 }
 
 function setByPath(target, pathString, value) {
@@ -205,6 +211,9 @@ function formatLog(logs) {
 async function main() {
   const payload = parseYamlBlock(issueBody);
   if (!payload) {
+    await commentOnIssue(
+      "CMS更新: YAMLブロックが見つかりませんでした。\\n\\n```yaml\\nCMS_UPDATE: true\\ntarget: site\\nchanges:\\n  - op: set_site\\n    path: \\\"sections.profile.title\\\"\\n    value: \\\"Profile\\\"\\n```"
+    );
     return;
   }
 
