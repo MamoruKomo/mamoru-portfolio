@@ -13,8 +13,7 @@ const enableWatch = args.has("--watch") || enableServe;
 
 const dataFiles = [
   path.join(srcDir, "data", "site.json"),
-  path.join(srcDir, "data", "projects.json"),
-  path.join(srcDir, "data", "timeline.json")
+  path.join(srcDir, "data", "projects.json")
 ];
 
 function readJson(filePath) {
@@ -42,18 +41,25 @@ function render() {
   const data = {
     site: readJson(dataFiles[0]),
     projects: readJson(dataFiles[1]),
-    timeline: readJson(dataFiles[2]),
     dev: enableServe
   };
 
-  const templatePath = path.join(srcDir, "index.ejs");
-  const template = fs.readFileSync(templatePath, "utf8");
-  const html = ejs.render(template, data, {
-    filename: templatePath
-  });
+  const templates = [
+    {
+      templatePath: path.join(srcDir, "index.ejs"),
+      outputPath: path.join(distDir, "index.html")
+    }
+  ];
 
   ensureDir(distDir);
-  fs.writeFileSync(path.join(distDir, "index.html"), html);
+  templates.forEach(({ templatePath, outputPath }) => {
+    const template = fs.readFileSync(templatePath, "utf8");
+    const html = ejs.render(template, data, {
+      filename: templatePath
+    });
+    ensureDir(path.dirname(outputPath));
+    fs.writeFileSync(outputPath, html);
+  });
   if (fs.existsSync(publicDir)) {
     copyDir(publicDir, distDir);
   }
@@ -87,11 +93,17 @@ function serve() {
     }
 
     const requestedPath = requestUrl.pathname === "/" ? "/index.html" : requestUrl.pathname;
-    const filePath = path.join(distDir, requestedPath);
+    let filePath = path.join(distDir, requestedPath);
     if (!filePath.startsWith(distDir)) {
       res.writeHead(403);
       res.end();
       return;
+    }
+    if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
+      const indexPath = path.join(filePath, "index.html");
+      if (fs.existsSync(indexPath)) {
+        filePath = indexPath;
+      }
     }
     if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
       res.writeHead(404);

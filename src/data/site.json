@@ -1,26 +1,56 @@
 {
-  "name": "Komoda Mamoru",
-  "title": "実績で語るポートフォリオ",
-  "tagline": "数字と文脈で、価値のある体験を設計します。",
-  "overviewSummary": "派手な数値よりも、課題の整理・仮説設計・検証の積み重ねを大切にしています。",
-  "marketStatus": "Open for collaboration",
-  "stats": [
-    { "label": "プロジェクト数", "value": "18" },
-    { "label": "成長率", "value": "+142%" },
-    { "label": "成功率", "value": "61%" }
-  ],
-  "competencies": [
-    { "name": "戦略設計", "score": 92, "change": "+2.1%" },
-    { "name": "UX設計", "score": 88, "change": "+1.4%" },
-    { "name": "フロントエンド", "score": 84, "change": "+0.7%" },
-    { "name": "モーション", "score": 73, "change": "-0.4%" }
-  ],
-  "sentiment": {
-    "hireability": "前向き",
-    "velocity": "速い",
-    "risk": "中程度"
+  "_note": "This file acts like a simple CMS. Edit labels, copy, and links here.",
+  "meta": {
+    "name": "Komoda Mamoru",
+    "title": "実績で語るポートフォリオ"
   },
-  "about": "株式市場の動きのように、プロジェクトもコンテキストと数値で読み解く設計者です。",
+  "status": {
+    "label": "Open for collaboration"
+  },
+  "navigation": [
+    { "label": "Profile", "target": "intro" },
+    { "label": "Timeline", "target": "timeline" },
+    { "label": "Activities", "target": "process" },
+    { "label": "Contact", "target": "contact" }
+  ],
+  "ui": {
+    "scrollHint": "Scroll ↓",
+    "ticker": {
+      "repeat": 4,
+      "items": [
+        { "text": "NASDAQ / Portfolio Index", "tone": "base" },
+        { "text": "+2.4%", "tone": "gain" },
+        { "text": "YTD: +18.7%", "tone": "gain" },
+        { "text": "ROI +141%", "tone": "gain" },
+        { "text": "Volatility: 0.62", "tone": "base" },
+        { "text": "Momentum: High", "tone": "gain" }
+      ]
+    }
+  },
+  "sections": {
+    "profile": {
+      "title": "Profile Sheet",
+      "subtitle": "自己紹介とSNSリンクをまとめています。"
+    },
+    "timeline": {
+      "title": "Timeline Chart",
+      "subtitle": "プロジェクトの流れを時系列で確認できます。"
+    },
+    "activities": {
+      "title": "Activities",
+      "subtitle": "株式市場の動きのように、プロジェクトもコンテキストと数値で読み解く設計者です。"
+    },
+    "contact": {
+      "title": "Contact",
+      "lead": "採用ご担当者様・面談のご連絡はこちらからお願いいたします。",
+      "sublead": "内容確認後、2〜3営業日以内にご返信いたします。",
+      "note": {
+        "prefix": "返信がない場合やフォーム送信ができない場合は、",
+        "linkLabel": "メール",
+        "suffix": "へご連絡ください。"
+      }
+    }
+  },
   "intro": {
     "photo": "assets/mamorudesu.jpeg",
     "age": "18",
@@ -41,5 +71,82 @@
       { "label": "LinkedIn", "url": "https://www.linkedin.com/in/%E8%91%B5-%E8%96%A6%E7%94%B0-110129273/" },
       { "label": "Facebook", "url": "https://www.facebook.com/people/%E8%96%A6%E7%94%B0%E8%91%B5/pfbid02oZouFt6x1Pc5sdFpv13WgRRaoescFHFJGYpAUvnnSLQQE84AC6Z7HnuRCqEcPdKNl/" }
     ]
+  },
+  "contact": {
+    "email": "1234maron1234maron@gmail.com",
+    "mailSubject": "Contact from Portfolio",
+    "form": {
+      "privacyLabel": "プライバシーポリシーに同意します",
+      "hint": "内容確認後、2〜3営業日以内にご返信いたします。送信ボタンを押すとメーラーが起動します。",
+      "submitLabel": "送信する",
+      "directEmailLabel": "直接メールする",
+      "rows": [
+        ["name", "kana"],
+        ["company"],
+        ["address"],
+        ["email"],
+        ["title"],
+        ["message"]
+      ],
+      "fields": {
+        "name": {
+          "label": "お名前",
+          "type": "text",
+          "name": "name",
+          "autocomplete": "name",
+          "required": true,
+          "maxlength": 80,
+          "placeholder": "山田 太郎"
+        },
+        "kana": {
+          "label": "フリガナ",
+          "type": "text",
+          "name": "kana",
+          "required": true,
+          "maxlength": 80,
+          "placeholder": "ヤマダ タロウ"
+        },
+        "company": {
+          "label": "会社名",
+          "type": "text",
+          "name": "company",
+          "autocomplete": "organization",
+          "maxlength": 80,
+          "placeholder": "株式会社サンプル"
+        },
+        "address": {
+          "label": "住所",
+          "type": "text",
+          "name": "address",
+          "autocomplete": "street-address",
+          "maxlength": 120,
+          "placeholder": "東京都渋谷区..."
+        },
+        "email": {
+          "label": "メールアドレス",
+          "type": "email",
+          "name": "email",
+          "autocomplete": "email",
+          "required": true,
+          "placeholder": "example@mail.com"
+        },
+        "title": {
+          "label": "タイトル",
+          "type": "text",
+          "name": "title",
+          "maxlength": 80,
+          "placeholder": "お問い合わせの件名"
+        },
+        "message": {
+          "label": "ご依頼・ご相談内容",
+          "type": "textarea",
+          "name": "message",
+          "required": true,
+          "maxlength": 1000,
+          "rows": 6,
+          "placeholder": "ご相談内容をご記入ください。"
+        }
+      }
+    }
   }
 }

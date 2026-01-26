@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%= site.name %> | <%= site.title %></title>
+    <title><%= site.meta.name %> | <%= site.meta.title %></title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,79 +17,62 @@
     <header class="topbar">
       <div class="logo">
         <span class="logo-mark">▲</span>
-        <span><%= site.name %></span>
+        <span><%= site.meta.name %></span>
       </div>
       <nav class="topnav">
-        <button class="nav-link" data-target="intro">Profile</button>
-        <button class="nav-link" data-target="timeline">Timeline</button>
-        <button class="nav-link" data-target="process">Process</button>
-        <button class="nav-link" data-target="contact">Contact</button>
+        <% (site.navigation || []).forEach((item) => { %>
+          <button class="nav-link" data-target="<%= item.target %>"><%= item.label %></button>
+        <% }) %>
       </nav>
       <div class="status">
         <span class="dot"></span>
-        <span><%= site.marketStatus %></span>
+        <span><%= site.status.label %></span>
       </div>
     </header>
 
     <%
-      const normalizedProjects = projects.map((project) => {
+      const projectItems = (projects.items || []);
+      const normalizedProjects = projectItems.map((project) => {
         const fallbackDate = `${project.year || "2024"}-01-01`;
         const parsedDate = Date.parse(project.date || fallbackDate);
         const dateValue = Number.isNaN(parsedDate) ? Date.parse(fallbackDate) : parsedDate;
-        const height = Number(project.height ?? 0);
-        return { ...project, date: project.date || fallbackDate, dateValue, height };
+        return { ...project, date: project.date || fallbackDate, dateValue };
       });
       const sortedProjects = normalizedProjects.slice().sort((a, b) => a.dateValue - b.dateValue);
-      const dateValues = sortedProjects.map((project) => project.dateValue);
-      const heightValues = sortedProjects.map((project) => project.height);
-      const minDate = Math.min(...dateValues);
-      const maxDate = Math.max(...dateValues);
-      const minHeight = Math.min(...heightValues);
-      const maxHeight = Math.max(...heightValues);
-      const dateRange = Math.max(1, maxDate - minDate);
-      const heightRange = Math.max(1, maxHeight - minHeight);
-      const timelinePadding = 12;
-      const timelinePoints = sortedProjects.map((project) => {
-        const x = timelinePadding + ((project.dateValue - minDate) / dateRange) * (100 - timelinePadding * 2);
-        const y = timelinePadding + ((maxHeight - project.height) / heightRange) * (100 - timelinePadding * 2);
-        return { ...project, x, y };
+      const tagSet = new Set();
+      sortedProjects.forEach((project) => {
+        (project.tags || []).forEach((tag) => tagSet.add(tag));
       });
-      const timelineLinePoints = timelinePoints.map((point) => `${point.x.toFixed(2)},${point.y.toFixed(2)}`).join(" ");
+      const tagList = Array.from(tagSet);
     %>
 
     <main class="ticker-wrapper">
       <div class="ticker">
-        <div class="ticker-line">
-          <span>NASDAQ / Portfolio Index</span>
-          <span class="gain">+2.4%</span>
-          <span>YTD: +18.7%</span>
-          <span class="gain">ROI +141%</span>
-          <span>Volatility: 0.62</span>
-          <span class="gain">Momentum: High</span>
-        </div>
-        <div class="ticker-line">
-          <span>NASDAQ / Portfolio Index</span>
-          <span class="gain">+2.4%</span>
-          <span>YTD: +18.7%</span>
-          <span class="gain">ROI +141%</span>
-          <span>Volatility: 0.62</span>
-          <span class="gain">Momentum: High</span>
-        </div>
+        <% const ticker = site.ui && site.ui.ticker ? site.ui.ticker : { items: [], repeat: 1 }; %>
+        <% const tickerItems = ticker.items || []; %>
+        <% const tickerRepeat = Math.max(1, ticker.repeat || 1); %>
+        <% for (let i = 0; i < tickerRepeat; i += 1) { %>
+          <div class="ticker-line">
+            <% tickerItems.forEach((item) => { %>
+              <span class="<%= item.tone === 'gain' ? 'gain' : '' %>"><%= item.text %></span>
+            <% }) %>
+          </div>
+        <% } %>
       </div>
     </main>
 
-    <div class="scroll-hint">Scroll →</div>
+    <div class="scroll-hint"><%= site.ui.scrollHint %></div>
 
     <section class="panels" id="panels">
       <article class="panel intro" data-panel="intro">
         <div class="panel-header">
-          <h2>Profile Sheet</h2>
-          <p>自己紹介とSNSリンクをまとめています。</p>
+          <h2><%= site.sections.profile.title %></h2>
+          <p><%= site.sections.profile.subtitle %></p>
         </div>
         <div class="intro-card">
           <div class="intro-photo">
             <% if (site.intro.photo) { %>
-              <img src="<%= site.intro.photo %>" alt="<%= site.name %> profile" />
+              <img src="<%= site.intro.photo %>" alt="<%= site.meta.name %> profile" />
             <% } else { %>
               <div class="photo-placeholder">No Image</div>
             <% } %>
@@ -97,7 +80,7 @@
           <div class="intro-info">
             <div>
               <p class="label">Name</p>
-              <p class="value"><%= site.name %></p>
+              <p class="value"><%= site.meta.name %></p>
             </div>
             <div>
               <p class="label">Age</p>
@@ -139,107 +122,224 @@
 
       <article class="panel timeline-panel" data-panel="timeline">
         <div class="panel-header">
-          <h2>Timeline Chart</h2>
-          <p>プロジェクトの推移を年表で確認できます。</p>
+          <h2><%= site.sections.timeline.title %></h2>
+          <p><%= site.sections.timeline.subtitle %></p>
         </div>
-        <div class="timeline-chart">
-          <div class="life-chart life-chart--timeline">
-            <div class="life-chart-inner">
-              <svg class="life-chart-svg" viewBox="0 0 100 100" aria-hidden="true" preserveAspectRatio="none">
-                <polyline class="chart-line" points="<%= timelineLinePoints %>" fill="none" />
-              </svg>
-              <% timelinePoints.forEach((point) => { %>
-                <span
-                  class="chart-dot chart-dot--timeline"
-                  style="--x: <%= point.x.toFixed(2) %>; --y: <%= point.y.toFixed(2) %>;"
-                ></span>
-              <% }) %>
-              <% timelinePoints.forEach((point) => { %>
-                <button
-                  class="chart-point <%= point.y < 18 ? "is-top" : "" %>"
-                  type="button"
-                  data-url="<%= point.url %>"
-                  style="--x: <%= point.x.toFixed(2) %>; --y: <%= point.y.toFixed(2) %>;"
-                >
-                    <div class="chart-card">
-                      <span class="chart-date"><%= point.date %></span>
-                      <h4><%= point.name %></h4>
-                    <div class="chart-skills">
-                      <% (point.skills || []).forEach((skill) => { %>
-                        <div class="chart-skill">
-                          <span class="skill-name"><%= skill %></span>
-                          <span class="skill-gain"><%= point.skillGains && point.skillGains[skill] ? point.skillGains[skill] : "" %></span>
+        <div class="timeline-board" data-timeline-board>
+          <div class="timeline-track" data-timeline-track>
+            <svg class="timeline-line" aria-hidden="true">
+              <polyline class="timeline-polyline" fill="none"></polyline>
+            </svg>
+            <div class="timeline-list">
+            <% sortedProjects.forEach((project) => { %>
+              <%
+                const gainEntries = Object.entries(project.skillGains || {})
+                  .map(([name, value]) => {
+                    const numeric = Number(String(value).replace(/[^0-9.-]/g, "")) || 0;
+                    return { name, value, numeric };
+                  })
+                  .sort((a, b) => b.numeric - a.numeric)
+                  .slice(0, 3);
+                const maxGain = Math.max(1, ...gainEntries.map((entry) => entry.numeric));
+              %>
+              <div class="timeline-item">
+                <div class="timeline-marker">
+                  <span class="timeline-dot" aria-hidden="true"></span>
+                  <span class="timeline-year"><%= project.year %></span>
+                  <span class="timeline-ticker"><%= project.ticker || "PORT" %></span>
+                </div>
+                <div class="timeline-card">
+                  <div class="timeline-card-head">
+                    <h3><%= project.name %></h3>
+                    <div class="timeline-head-meta">
+                      <span class="timeline-market"><%= project.market || project.sector %></span>
+                      <% if (gainEntries.length) { %>
+                        <div class="timeline-mini" aria-label="Skill growth">
+                          <% gainEntries.forEach((entry) => { %>
+                            <div class="mini-row">
+                              <span class="mini-label"><%= entry.name %></span>
+                              <span class="mini-bar" style="--mini-width: <%= (entry.numeric / maxGain) * 100 %>%"></span>
+                              <span class="mini-value"><%= entry.value %></span>
+                            </div>
+                          <% }) %>
                         </div>
-                      <% }) %>
+                      <% } %>
                     </div>
-                    <span class="chart-result"><%= point.result %></span>
-                    <a class="chart-link" href="<%= point.url %>" target="_blank" rel="noopener">View More →</a>
                   </div>
-                </button>
-              <% }) %>
+                  <p class="timeline-thesis"><%= project.thesis %></p>
+                  <div class="timeline-metrics">
+                    <span class="timeline-impact"><%= project.result %></span>
+                    <span class="timeline-period"><%= project.period %></span>
+                  </div>
+                  <div class="timeline-tags">
+                    <% (project.skills || []).forEach((skill) => { %>
+                      <span><%= skill %></span>
+                    <% }) %>
+                  </div>
+                  <a class="chart-link" href="#process" data-year="<%= project.year %>">Activitiesを見る →</a>
+                </div>
+              </div>
+            <% }) %>
             </div>
+          </div>
+        </div>
+        <div class="timeline-scrollbar" data-timeline-scrollbar aria-hidden="true">
+          <div class="timeline-scrollbar-track">
+            <div class="timeline-scrollbar-thumb"></div>
           </div>
         </div>
       </article>
 
       <article class="panel process" data-panel="process">
         <div class="panel-header">
-          <h2>Process: Market Thesis</h2>
-          <p><%= site.about %></p>
+          <h2><%= site.sections.activities.title %></h2>
+          <p><%= site.sections.activities.subtitle %></p>
         </div>
-        <div class="process-grid">
-          <div class="process-card">
-            <h3>Research</h3>
-            <p>市場の歪みを探し、ユーザー行動と数字を照合します。</p>
+        <div class="process-filters">
+          <div class="filter-row">
+            <button class="filter-button is-active" type="button" data-filter-tag="all">All</button>
+            <% tagList.forEach((tag) => { %>
+              <button class="filter-button" type="button" data-filter-tag="<%= tag %>">#<%= tag %></button>
+            <% }) %>
           </div>
-          <div class="process-card">
-            <h3>Strategy</h3>
-            <p>投資仮説のように、打ち手とリスクを明確にします。</p>
-          </div>
-          <div class="process-card">
-            <h3>Execution</h3>
-            <p>プロトタイプを高速に検証し、勝ち筋を深掘りします。</p>
-          </div>
-          <div class="process-card">
-            <h3>Growth</h3>
-            <p>KPIに合わせて改善し、継続的な成長を実装します。</p>
+          <div class="filter-meta">
+            <span class="filter-status" data-filter-status></span>
+            <button class="filter-reset" type="button" data-filter-reset>Reset</button>
           </div>
         </div>
-        <div class="timeline">
-          <% timeline.forEach((node) => { %>
-            <div class="timeline-node">
-              <span class="year"><%= node.year %></span>
-              <span class="label"><%= node.label %></span>
-              <% if (node.role) { %>
-                <span class="timeline-role"><%= node.role %></span>
-              <% } %>
-              <% if (node.summary) { %>
-                <span class="timeline-summary"><%= node.summary %></span>
-              <% } %>
-            </div>
+        <div class="project-list">
+          <% sortedProjects.forEach((project) => { %>
+            <% const projectCover = project.cover || site.intro.photo || "assets/mamorudesu.jpeg"; %>
+            <article
+              class="project-card"
+              data-project-card
+              data-year="<%= project.year %>"
+              data-tags="<%= (project.tags || []).join(",") %>"
+            >
+              <div class="project-media">
+                <img src="<%= projectCover %>" alt="<%= project.name %> project preview" loading="lazy" />
+              </div>
+              <div class="project-body">
+                <div class="project-head">
+                  <div class="project-ticker">
+                    <span class="ticker-label"><%= project.ticker || "PORT" %></span>
+                    <span class="ticker-market"><%= project.market || "Portfolio" %></span>
+                  </div>
+                  <span class="project-year"><%= project.year %></span>
+                </div>
+                <h3 class="project-title"><%= project.name %></h3>
+                <p class="project-sector"><span class="meta-label">領域</span><%= project.sector %></p>
+                <p class="project-thesis"><span class="meta-label">概要</span><%= project.thesis %></p>
+                <p class="project-result"><span class="meta-label">成果</span><%= project.result %></p>
+                <div class="project-meta">
+                  <div class="meta-item">
+                    <span class="meta-key">担当範囲</span>
+                    <span class="meta-value"><%= project.responsibilities %></span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-key">役割</span>
+                    <span class="meta-value"><%= project.role %></span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-key">使用技術</span>
+                    <span class="meta-value"><%= (project.tech || []).join(" / ") %></span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-key">期間</span>
+                    <span class="meta-value"><%= project.period %></span>
+                  </div>
+                  <div class="meta-item">
+                    <span class="meta-key">チーム規模</span>
+                    <span class="meta-value"><%= project.teamSize %></span>
+                  </div>
+                </div>
+                <div class="project-tags">
+                  <% (project.tags || []).forEach((tag) => { %>
+                    <span>#<%= tag %></span>
+                  <% }) %>
+                </div>
+              </div>
+            </article>
           <% }) %>
         </div>
       </article>
 
       <article class="panel contact" data-panel="contact">
         <div class="panel-header">
-          <h2>Investor Relations</h2>
-          <p>For collaborations, speaking, or new ventures.</p>
+          <h2><%= site.sections.contact.title %></h2>
+          <p class="contact-lead"><%= site.sections.contact.lead %></p>
+          <p class="contact-sublead"><%= site.sections.contact.sublead %></p>
+          <p class="contact-note">
+            <%= site.sections.contact.note.prefix %>
+            <a class="link" href="mailto:<%= site.contact.email %>?subject=<%= encodeURIComponent(site.contact.mailSubject) %>">
+              <%= site.sections.contact.note.linkLabel %>
+            </a><%= site.sections.contact.note.suffix %>
+          </p>
         </div>
         <div class="contact-card">
-          <div>
-            <p class="label">Email</p>
-            <p class="value">hello@example.com</p>
-          </div>
-          <div>
-            <p class="label">Location</p>
-            <p class="value">Tokyo / Remote</p>
-          </div>
-          <div>
-            <p class="label">Availability</p>
-            <p class="value">Q3 2025</p>
-          </div>
-          <button class="cta ghost">Download Resume →</button>
+          <form
+            class="contact-form"
+            action="mailto:<%= site.contact.email %>"
+            method="post"
+            enctype="text/plain"
+          >
+            <% const form = site.contact.form || {}; %>
+            <% const formFields = form.fields || {}; %>
+            <% (form.rows || []).forEach((row) => { %>
+              <div class="form-row">
+                <% row.forEach((fieldKey) => { %>
+                  <% const field = formFields[fieldKey]; %>
+                  <% if (!field) return; %>
+                  <div class="form-field">
+                    <label class="form-label" for="contact-<%= fieldKey %>">
+                      <%= field.label %>
+                      <% if (field.required) { %>
+                        <span class="required">*</span>
+                      <% } %>
+                    </label>
+                    <% if (field.type === "textarea") { %>
+                      <textarea
+                        class="form-textarea"
+                        id="contact-<%= fieldKey %>"
+                        name="<%= field.name %>"
+                        rows="<%= field.rows || 6 %>"
+                        <% if (field.required) { %>required<% } %>
+                        <% if (field.maxlength) { %>maxlength="<%= field.maxlength %>"<% } %>
+                        placeholder="<%= field.placeholder || '' %>"
+                      ></textarea>
+                    <% } else { %>
+                      <input
+                        class="form-input"
+                        id="contact-<%= fieldKey %>"
+                        name="<%= field.name %>"
+                        type="<%= field.type || "text" %>"
+                        <% if (field.autocomplete) { %>autocomplete="<%= field.autocomplete %>"<% } %>
+                        <% if (field.required) { %>required<% } %>
+                        <% if (field.maxlength) { %>maxlength="<%= field.maxlength %>"<% } %>
+                        placeholder="<%= field.placeholder || '' %>"
+                      />
+                    <% } %>
+                  </div>
+                <% }) %>
+              </div>
+            <% }) %>
+
+            <label class="form-checkbox">
+              <input type="checkbox" name="policy" required />
+              <span><%= form.privacyLabel %></span>
+            </label>
+
+            <p class="form-hint">
+              <%= form.hint %>
+            </p>
+
+            <div class="form-actions">
+              <button class="cta" type="submit"><%= form.submitLabel %></button>
+              <a class="link" href="mailto:<%= site.contact.email %>?subject=<%= encodeURIComponent(site.contact.mailSubject) %>">
+                <%= form.directEmailLabel %>
+              </a>
+            </div>
+          </form>
         </div>
       </article>
     </section>

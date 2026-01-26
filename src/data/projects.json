@@ -1,68 +1,90 @@
-[
-  {
-    "ticker": "GROW",
-    "name": "Growth Dashboard",
-    "sector": "SaaS / Analytics",
-    "thesis": "LTV and CAC visible in under 5 seconds.",
-    "result": "+38% activation",
-    "date": "2024-10-01",
-    "height": 86,
-    "skills": ["Product Strategy", "UX Systems", "Frontend"],
-    "skillGains": {
-      "Product Strategy": "+3",
-      "UX Systems": "+4",
-      "Frontend": "+2"
+{
+  "_note": "Project list for Activities and Timeline. Edit items only.",
+  "items": [
+    {
+      "ticker": "comora",
+      "name": "綿飴屋comora",
+      "sector": "Small Business / 町おこし",
+      "thesis": "LTV and CAC visible in under 5 seconds.",
+      "result": "+38% activation",
+      "height": 86,
+      "role": "UI/UX設計・フロント実装",
+      "responsibilities": "情報設計、ダッシュボード構成、指標の可視化",
+      "tech": ["Figma", "React", "TypeScript", "D3.js"],
+      "period": "2024.03 - 2024.08",
+      "teamSize": "4名",
+      "skills": ["Product Strategy", "UX Systems", "Frontend"],
+      "tags": ["Engineering", "Design", "Implementation", "Research", "ProjectManagement"],
+      "skillGains": {
+        "Product Strategy": "+3",
+        "UX Systems": "+4",
+        "Frontend": "+2"
+      },
+      "year": "2024"
     },
-    "year": "2024",
-    "url": "#"
-  },
-  {
-    "ticker": "VOLT",
-    "name": "Motion Commerce",
-    "sector": "Retail / Video",
-    "thesis": "Short-form journeys for high-intent buyers.",
-    "result": "+27% conversion",
-    "date": "2023-06-15",
-    "height": 72,
-    "skills": ["Motion", "Frontend", "UX Systems"],
-    "skillGains": {
-      "Motion": "+5",
-      "Frontend": "+2",
-      "UX Systems": "+2"
+    {
+      "ticker": "VOLT",
+      "market": "Retail",
+      "name": "Motion Commerce",
+      "sector": "Retail / Video",
+      "thesis": "Short-form journeys for high-intent buyers.",
+      "result": "+27% conversion",
+      "height": 72,
+      "role": "UX設計・プロトタイピング",
+      "responsibilities": "ユーザー導線設計、モーション設計、UI検証",
+      "tech": ["After Effects", "Figma", "Protopie"],
+      "period": "2023.05 - 2023.11",
+      "teamSize": "3名",
+      "skills": ["Motion", "Frontend", "UX Systems"],
+      "tags": ["Design", "PrototypeDevelopment", "Implementation", "FieldTest"],
+      "skillGains": {
+        "Motion": "+5",
+        "Frontend": "+2",
+        "UX Systems": "+2"
+      },
+      "year": "2023"
     },
-    "year": "2023",
-    "url": "#"
-  },
-  {
-    "ticker": "CRED",
-    "name": "Trust Wallet",
-    "sector": "Fintech / Wallet",
-    "thesis": "Reduce risk with transparent flows.",
-    "result": "-21% drop-off",
-    "date": "2022-02-10",
-    "height": 58,
-    "skills": ["UX Systems", "Product Strategy"],
-    "skillGains": {
-      "UX Systems": "+3",
-      "Product Strategy": "+1"
+    {
+      "ticker": "CRED",
+      "market": "Fintech",
+      "name": "Trust Wallet",
+      "sector": "Fintech / Wallet",
+      "thesis": "Reduce risk with transparent flows.",
+      "result": "-21% drop-off",
+      "height": 58,
+      "role": "UXリサーチ・情報設計",
+      "responsibilities": "ユーザー調査、課題整理、導線改善",
+      "tech": ["Notion", "Figma", "Maze"],
+      "period": "2022.04 - 2022.09",
+      "teamSize": "5名",
+      "skills": ["UX Systems", "Product Strategy"],
+      "tags": ["ServiceDesign", "Design", "Research", "Implementation"],
+      "skillGains": {
+        "UX Systems": "+3",
+        "Product Strategy": "+1"
+      },
+      "year": "2022"
     },
-    "year": "2022",
-    "url": "#"
-  },
-  {
-    "ticker": "AERO",
-    "name": "Flight Ops",
-    "sector": "Travel / Ops",
-    "thesis": "Operational clarity for dispatch teams.",
-    "result": "+19% throughput",
-    "date": "2021-04-05",
-    "height": 46,
-    "skills": ["UX Systems", "Research"],
-    "skillGains": {
-      "UX Systems": "+2",
-      "Research": "+4"
-    },
-    "year": "2021",
-    "url": "#"
-  }
-]
+    {
+      "ticker": "AERO",
+      "market": "Travel",
+      "name": "Flight Ops",
+      "sector": "Travel / Ops",
+      "thesis": "Operational clarity for dispatch teams.",
+      "result": "+19% throughput",
+      "height": 46,
+      "role": "サービス設計・運用設計",
+      "responsibilities": "業務フロー整理、KPI設計、現場検証",
+      "tech": ["Miro", "Figma", "Google Forms"],
+      "period": "2021.06 - 2021.12",
+      "teamSize": "4名",
+      "skills": ["UX Systems", "Research"],
+      "tags": ["Research", "ServiceDesign", "ProjectManagement", "FieldTest"],
+      "skillGains": {
+        "UX Systems": "+2",
+        "Research": "+4"
+      },
+      "year": "2021"
+    }
+  ]
+}
