@@ -1,0 +1,24 @@
+name: CMS Update
+about: Update site.json / projects.json via Issue
+labels: [approve]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        以下の YAML を編集してください。`target` と `changes` を必ず入力してください。
+  - type: textarea
+    id: cms_yaml
+    attributes:
+      label: CMS YAML
+      description: JSONを更新するためのYAMLを記入
+      value: |
+        ```yaml
+        CMS_UPDATE: true
+        target: site
+        changes:
+          - op: set_site
+            path: "sections.profile.title"
+            value: "Profile"
+        ```
+    validations:
+      required: true

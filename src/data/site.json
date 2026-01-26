@@ -118,6 +118,8 @@
     "email": "1234maron1234maron@gmail.com",
     "mailSubject": "Contact from Portfolio",
     "form": {
+      "action": "https://formspree.io/f/mgokkavw",
+      "method": "POST",
       "privacyLabel": "プライバシーポリシーに同意します",
       "hint": "内容確認後、2〜3営業日以内にご返信いたします。送信ボタンを押すとメーラーが起動します。",
       "submitLabel": "送信する",

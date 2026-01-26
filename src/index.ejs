@@ -277,13 +277,12 @@
           </p>
         </div>
         <div class="contact-card">
+          <% const form = site.contact.form || {}; %>
           <form
             class="contact-form"
-            action="mailto:<%= site.contact.email %>"
-            method="post"
-            enctype="text/plain"
+            action="<%= form.action || ('mailto:' + site.contact.email) %>"
+            method="<%= form.method || 'post' %>"
           >
-            <% const form = site.contact.form || {}; %>
             <% const formFields = form.fields || {}; %>
             <% (form.rows || []).forEach((row) => { %>
               <div class="form-row">

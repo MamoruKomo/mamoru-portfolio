@@ -1,9 +1,9 @@
-# CMS Edit Guide
+# CMS 編集ガイド
 
-This repo uses GitHub Issues to update JSON data.
+このリポジトリは GitHub Issue を使って JSON を更新します。
 
-## Issue Format (Required)
-Put this YAML in the Issue body (code fence recommended):
+## Issue 本文フォーマット（必須）
+以下の YAML を Issue 本文に入れてください（コードフェンス推奨）。
 
 ```yaml
 CMS_UPDATE: true
@@ -21,10 +21,10 @@ changes:
     id: "..."
 ```
 
-## 1) site.json (target: site)
-Only `set_site` is allowed.
+## 1) site.json（target: site）
+`set_site` のみ許可されます。
 
-Common paths:
+よく使うパス:
 - meta.name
 - meta.title
 - status.label
@@ -62,7 +62,7 @@ Common paths:
 - contact.form.fields.name.label
 - contact.form.fields.name.placeholder
 
-Example:
+例:
 ```yaml
 CMS_UPDATE: true
 target: site
@@ -72,13 +72,12 @@ changes:
     value: "Profile"
 ```
 
-## 2) projects.json (target: project)
-Use `add_project`, `update_project`, or `delete_project`.
+## 2) projects.json（target: project）
+`add_project` / `update_project` / `delete_project` を使います。
 
-Project ID is required for update/delete:
-- id (string, unique)
+更新・削除には `id` が必要です。
 
-Required-ish fields for display:
+表示に必要な主な項目:
 - id
 - ticker
 - market
@@ -88,17 +87,17 @@ Required-ish fields for display:
 - result
 - role
 - responsibilities
-- tech (array)
+- tech (配列)
 - period
 - teamSize
-- skills (array)
-- tags (array)
-- skillGains (object)
+- skills (配列)
+- tags (配列)
+- skillGains (オブジェクト)
 - year
 
-Examples:
+例:
 
-Add:
+追加:
 ```yaml
 CMS_UPDATE: true
 target: project
@@ -125,7 +124,7 @@ changes:
       year: "2024"
 ```
 
-Update:
+更新:
 ```yaml
 CMS_UPDATE: true
 target: project
@@ -137,7 +136,7 @@ changes:
       tech: ["Figma", "After Effects"]
 ```
 
-Delete:
+削除:
 ```yaml
 CMS_UPDATE: true
 target: project
@@ -146,11 +145,11 @@ changes:
     id: "motion-commerce"
 ```
 
-## Approval Rules
-The issue is processed only when:
-- Issue author has write permission, or
-- Issue has the `approve` label
+## 承認ルール
+以下のどちらかを満たすと処理されます。
+- Issue 作成者が write 権限以上
+- Issue に `approve` ラベルが付いている
 
-## Notes
-- YAML block can be plain text or fenced with ```yaml.
-- After update: JSON is updated, build runs, commit is pushed.
+## 補足
+- YAML はコードフェンスあり/なしどちらでも動きます。
+- 更新後は JSON が書き換わり、ビルド→commit→push まで自動実行されます。

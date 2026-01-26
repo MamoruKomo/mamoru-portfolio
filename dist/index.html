@@ -689,13 +689,12 @@
           </p>
         </div>
         <div class="contact-card">
+          
           <form
             class="contact-form"
-            action="mailto:1234maron1234maron@gmail.com"
-            method="post"
-            enctype="text/plain"
+            action="https://formspree.io/f/mgokkavw"
+            method="POST"
           >
-            
             
             
               <div class="form-row">
@@ -898,6 +897,15 @@
     </section>
 
     <script src="assets/main.js"></script>
+    
+      <script>
+        if ("EventSource" in window) {
+          const source = new EventSource("/__reload");
+          source.addEventListener("message", () => {
+            window.location.reload();
+          });
+        }
+      </script>
     
   </body>
 </html>
