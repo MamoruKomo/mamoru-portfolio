@@ -8,28 +8,58 @@
     "label": "Open for collaboration"
   },
   "navigation": [
-    { "label": "Profile", "target": "intro" },
-    { "label": "Timeline", "target": "timeline" },
-    { "label": "Activities", "target": "process" },
-    { "label": "Contact", "target": "contact" }
+    {
+      "label": "Profile",
+      "target": "intro"
+    },
+    {
+      "label": "Timeline",
+      "target": "timeline"
+    },
+    {
+      "label": "Activities",
+      "target": "process"
+    },
+    {
+      "label": "Contact",
+      "target": "contact"
+    }
   ],
   "ui": {
     "scrollHint": "Scroll ↓",
     "ticker": {
       "repeat": 4,
       "items": [
-        { "text": "NASDAQ / Portfolio Index", "tone": "base" },
-        { "text": "+2.4%", "tone": "gain" },
-        { "text": "YTD: +18.7%", "tone": "gain" },
-        { "text": "ROI +141%", "tone": "gain" },
-        { "text": "Volatility: 0.62", "tone": "base" },
-        { "text": "Momentum: High", "tone": "gain" }
+        {
+          "text": "NASDAQ / Portfolio Index",
+          "tone": "base"
+        },
+        {
+          "text": "+2.4%",
+          "tone": "gain"
+        },
+        {
+          "text": "YTD: +18.7%",
+          "tone": "gain"
+        },
+        {
+          "text": "ROI +141%",
+          "tone": "gain"
+        },
+        {
+          "text": "Volatility: 0.62",
+          "tone": "base"
+        },
+        {
+          "text": "Momentum: High",
+          "tone": "gain"
+        }
       ]
     }
   },
   "sections": {
     "profile": {
-      "title": "Profile Sheet",
+      "title": "Profile",
       "subtitle": "自己紹介とSNSリンクをまとめています。"
     },
     "timeline": {
@@ -66,10 +96,22 @@
       "イベント制作"
     ],
     "links": [
-      { "label": "X", "url": "https://x.com/kmc_mamo" },
-      { "label": "GitHub", "url": "https://github.com/MamoruKomo" },
-      { "label": "LinkedIn", "url": "https://www.linkedin.com/in/%E8%91%B5-%E8%96%A6%E7%94%B0-110129273/" },
-      { "label": "Facebook", "url": "https://www.facebook.com/people/%E8%96%A6%E7%94%B0%E8%91%B5/pfbid02oZouFt6x1Pc5sdFpv13WgRRaoescFHFJGYpAUvnnSLQQE84AC6Z7HnuRCqEcPdKNl/" }
+      {
+        "label": "X",
+        "url": "https://x.com/kmc_mamo"
+      },
+      {
+        "label": "GitHub",
+        "url": "https://github.com/MamoruKomo"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/%E8%91%B5-%E8%96%A6%E7%94%B0-110129273/"
+      },
+      {
+        "label": "Facebook",
+        "url": "https://www.facebook.com/people/%E8%96%A6%E7%94%B0%E8%91%B5/pfbid02oZouFt6x1Pc5sdFpv13WgRRaoescFHFJGYpAUvnnSLQQE84AC6Z7HnuRCqEcPdKNl/"
+      }
     ]
   },
   "contact": {
@@ -81,12 +123,25 @@
       "submitLabel": "送信する",
       "directEmailLabel": "直接メールする",
       "rows": [
-        ["name", "kana"],
-        ["company"],
-        ["address"],
-        ["email"],
-        ["title"],
-        ["message"]
+        [
+          "name",
+          "kana"
+        ],
+        [
+          "company"
+        ],
+        [
+          "address"
+        ],
+        [
+          "email"
+        ],
+        [
+          "title"
+        ],
+        [
+          "message"
+        ]
       ],
       "fields": {
         "name": {

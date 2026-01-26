@@ -12,11 +12,26 @@
       "height": 86,
       "role": "UI/UX設計・フロント実装",
       "responsibilities": "情報設計、ダッシュボード構成、指標の可視化",
-      "tech": ["Figma", "React", "TypeScript", "D3.js"],
+      "tech": [
+        "Figma",
+        "React",
+        "TypeScript",
+        "D3.js"
+      ],
       "period": "2024.03 - 2024.08",
       "teamSize": "4名",
-      "skills": ["Product Strategy", "UX Systems", "Frontend"],
-      "tags": ["Engineering", "Design", "Implementation", "Research", "ProjectManagement"],
+      "skills": [
+        "Product Strategy",
+        "UX Systems",
+        "Frontend"
+      ],
+      "tags": [
+        "Engineering",
+        "Design",
+        "Implementation",
+        "Research",
+        "ProjectManagement"
+      ],
       "skillGains": {
         "Product Strategy": "+3",
         "UX Systems": "+4",
@@ -35,11 +50,24 @@
       "height": 72,
       "role": "UX設計・プロトタイピング",
       "responsibilities": "ユーザー導線設計、モーション設計、UI検証",
-      "tech": ["After Effects", "Figma", "Protopie"],
+      "tech": [
+        "After Effects",
+        "Figma",
+        "Protopie"
+      ],
       "period": "2023.05 - 2023.11",
       "teamSize": "3名",
-      "skills": ["Motion", "Frontend", "UX Systems"],
-      "tags": ["Design", "PrototypeDevelopment", "Implementation", "FieldTest"],
+      "skills": [
+        "Motion",
+        "Frontend",
+        "UX Systems"
+      ],
+      "tags": [
+        "Design",
+        "PrototypeDevelopment",
+        "Implementation",
+        "FieldTest"
+      ],
       "skillGains": {
         "Motion": "+5",
         "Frontend": "+2",
@@ -58,11 +86,23 @@
       "height": 58,
       "role": "UXリサーチ・情報設計",
       "responsibilities": "ユーザー調査、課題整理、導線改善",
-      "tech": ["Notion", "Figma", "Maze"],
+      "tech": [
+        "Notion",
+        "Figma",
+        "Maze"
+      ],
       "period": "2022.04 - 2022.09",
       "teamSize": "5名",
-      "skills": ["UX Systems", "Product Strategy"],
-      "tags": ["ServiceDesign", "Design", "Research", "Implementation"],
+      "skills": [
+        "UX Systems",
+        "Product Strategy"
+      ],
+      "tags": [
+        "ServiceDesign",
+        "Design",
+        "Research",
+        "Implementation"
+      ],
       "skillGains": {
         "UX Systems": "+3",
         "Product Strategy": "+1"
@@ -80,11 +120,23 @@
       "height": 46,
       "role": "サービス設計・運用設計",
       "responsibilities": "業務フロー整理、KPI設計、現場検証",
-      "tech": ["Miro", "Figma", "Google Forms"],
+      "tech": [
+        "Miro",
+        "Figma",
+        "Google Forms"
+      ],
       "period": "2021.06 - 2021.12",
       "teamSize": "4名",
-      "skills": ["UX Systems", "Research"],
-      "tags": ["Research", "ServiceDesign", "ProjectManagement", "FieldTest"],
+      "skills": [
+        "UX Systems",
+        "Research"
+      ],
+      "tags": [
+        "Research",
+        "ServiceDesign",
+        "ProjectManagement",
+        "FieldTest"
+      ],
       "skillGains": {
         "UX Systems": "+2",
         "Research": "+4"
