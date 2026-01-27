@@ -6,6 +6,7 @@ import http from "http";
 const root = process.cwd();
 const srcDir = path.join(root, "src");
 const distDir = path.join(root, "dist");
+const docsDir = path.join(root, "docs");
 const publicDir = path.join(root, "public");
 const args = new Set(process.argv.slice(2));
 const enableServe = args.has("--serve");
@@ -67,6 +68,8 @@ function render() {
   if (fs.existsSync(publicDir)) {
     copyDir(publicDir, distDir);
   }
+  fs.rmSync(docsDir, { recursive: true, force: true });
+  copyDir(distDir, docsDir);
 }
 
 const reloadClients = new Set();
