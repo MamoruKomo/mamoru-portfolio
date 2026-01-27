@@ -168,12 +168,11 @@
                     >
                       <div class="timeline-card-head">
                         <h3><%= project.name %></h3>
-                        <span class="timeline-market"><%= project.market || project.sector %></span>
                       </div>
                       <% if ((project.skills || []).length) { %>
                         <div class="timeline-skills">
                           <% (project.skills || []).forEach((skill) => { %>
-                            <span><%= skill %></span>
+                            <span>#<%= skill %></span>
                           <% }) %>
                         </div>
                       <% } %>
