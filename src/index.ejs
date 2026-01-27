@@ -207,6 +207,7 @@
           <% sortedProjects.forEach((project) => { %>
             <%
               const projectCover = project.cover || site.intro.photo || "assets/mamorudesu.jpeg";
+              const projectImages = (project.images || []).filter(Boolean);
               const hasText = (value) => value && value !== "TBD";
               const techList = (project.tech || []).filter(Boolean);
               const tagList = (project.tags || []).filter(Boolean);
@@ -225,14 +226,33 @@
               data-tags="<%= (project.tags || []).join(",") %>"
               data-project-id="<%= project.id %>"
             >
-              <div class="project-media">
-                <img src="<%= projectCover %>" alt="<%= project.name %> project preview" loading="lazy" />
-              </div>
-              <div class="project-body">
+              <button class="project-summary" type="button" data-project-toggle>
+                <div class="project-media">
+                  <img src="<%= projectCover %>" alt="<%= project.name %> project preview" loading="lazy" />
+                </div>
+                <div class="project-body">
+                  <span class="project-summary-year"><%= project.year %></span>
+                  <h3 class="project-title"><%= project.name %></h3>
+                  <% if ((project.skills || []).length) { %>
+                    <div class="project-skills">
+                      <% (project.skills || []).forEach((skill) => { %>
+                        <span><%= skill %></span>
+                      <% }) %>
+                    </div>
+                  <% } %>
+                </div>
+              </button>
+              <div class="project-details">
                 <div class="project-head">
                   <span class="project-year"><%= project.year %></span>
                 </div>
-                <h3 class="project-title"><%= project.name %></h3>
+                <% if (projectImages.length) { %>
+                  <div class="project-gallery">
+                    <% projectImages.forEach((image) => { %>
+                      <img src="<%= image %>" alt="<%= project.name %> detail" loading="lazy" />
+                    <% }) %>
+                  </div>
+                <% } %>
                 <% if (hasText(project.sector) || hasText(project.market)) { %>
                   <p class="project-sector"><span class="meta-label">領域</span><%= project.market || project.sector %></p>
                 <% } %>

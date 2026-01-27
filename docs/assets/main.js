@@ -46,6 +46,7 @@ const timelineDots = document.querySelectorAll(".timeline-dot");
 const timelineScrollbar = document.querySelector("[data-timeline-scrollbar]");
 const timelineThumb = document.querySelector(".timeline-scrollbar-thumb");
 const activityLinks = document.querySelectorAll("[data-activity-id]");
+const projectToggles = document.querySelectorAll("[data-project-toggle]");
 const params = new URLSearchParams(window.location.search);
 let activeTag = params.get("tag") || "all";
 let activeYear = params.get("year");
@@ -149,6 +150,14 @@ activityLinks.forEach((item) => {
       event.preventDefault();
       activate();
     }
+  });
+});
+
+projectToggles.forEach((toggle) => {
+  toggle.addEventListener("click", () => {
+    const card = toggle.closest(".project-card");
+    if (!card) return;
+    card.classList.toggle("is-open");
   });
 });
 

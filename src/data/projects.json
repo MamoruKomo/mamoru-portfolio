@@ -7,19 +7,32 @@
       "market": "Personal",
       "name": "comora",
       "sector": "Activity",
-      "thesis": "TBD",
-      "result": "TBD",
+      "thesis": "周りが高専に入学し動き始める中、何かできることはないかと思い始めたcomora。気づけば町民と話すのが楽しくて今は趣味になりました。",
+      "result": " コミュニケーション力+ / チャレンジ精神+ / ビジネス力+",
       "height": 76,
-      "role": "TBD",
-      "responsibilities": "TBD",
+      "role": "経営者兼わたあめ販売",
+      "responsibilities": "起業、出店準備・運営、町民とのコミュニケーション、接客・販売",
       "tech": [],
-      "period": "2023",
-      "teamSize": "TBD",
-      "skills": [],
-      "tags": [],
+      "period": "2023.05 - Present",
+      "teamSize": "3名",
+      "skills": [
+        "Entrepreneurship",
+        "Sales",
+        "Community"
+      ],
+      "tags": [
+        "Entrepreneurship",
+        "Sales",
+        "Community",
+        "SmallBusiness"
+      ],
       "skillGains": {},
       "year": "2023",
-      "cover":"assets/comora.jpeg"
+      "cover": "assets/comora.jpeg",
+      "images": [
+        "assets/projects/comora-1.jpg",
+        "assets/projects/comora-2.jpg"
+      ]
     },
     {
       "id": "devcamp-2024",
@@ -159,7 +172,7 @@
       "tags": [],
       "skillGains": {},
       "year": "2026",
-      "cover":"assets/Dcon2026.jpg"
+      "cover":"assets/Dcon2026.JPG"
     }
   ]
 }
