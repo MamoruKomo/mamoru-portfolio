@@ -676,7 +676,7 @@
         </div>
       </article>
 
-      <article class="panel contact" data-panel="contact">
+      <article class="panel contact" data-panel="contact" id="contact">
         <div class="panel-header">
           <h2>Contact</h2>
           <p class="contact-lead">採用ご担当者様・面談のご連絡はこちらからお願いいたします。</p>
@@ -877,8 +877,10 @@
             
 
             <label class="form-checkbox">
-              <input type="checkbox" name="policy" required />
-              <span>プライバシーポリシーに同意します</span>
+              <input id="contact-policy" type="checkbox" name="policy" required />
+              <span>
+                <a class="link" href="/privacy.html">プライバシーポリシーに同意します</a>
+              </span>
             </label>
 
             <p class="form-hint">

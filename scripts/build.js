@@ -48,6 +48,10 @@ function render() {
     {
       templatePath: path.join(srcDir, "index.ejs"),
       outputPath: path.join(distDir, "index.html")
+    },
+    {
+      templatePath: path.join(srcDir, "privacy.ejs"),
+      outputPath: path.join(distDir, "privacy.html")
     }
   ];
 

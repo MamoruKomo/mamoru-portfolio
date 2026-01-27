@@ -264,7 +264,7 @@
         </div>
       </article>
 
-      <article class="panel contact" data-panel="contact">
+      <article class="panel contact" data-panel="contact" id="contact">
         <div class="panel-header">
           <h2><%= site.sections.contact.title %></h2>
           <p class="contact-lead"><%= site.sections.contact.lead %></p>
@@ -324,8 +324,10 @@
             <% }) %>
 
             <label class="form-checkbox">
-              <input type="checkbox" name="policy" required />
-              <span><%= form.privacyLabel %></span>
+              <input id="contact-policy" type="checkbox" name="policy" required />
+              <span>
+                <a class="link" href="<%= form.privacyUrl %>"><%= form.privacyLabel %></a>
+              </span>
             </label>
 
             <p class="form-hint">

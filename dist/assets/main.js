@@ -48,6 +48,12 @@ const timelineThumb = document.querySelector(".timeline-scrollbar-thumb");
 const params = new URLSearchParams(window.location.search);
 let activeTag = params.get("tag") || "all";
 let activeYear = params.get("year");
+const policyCheckbox = document.querySelector("#contact-policy");
+
+if (policyCheckbox && localStorage.getItem("privacyAgree") === "true") {
+  policyCheckbox.checked = true;
+  localStorage.removeItem("privacyAgree");
+}
 
 
 function applyFilters() {

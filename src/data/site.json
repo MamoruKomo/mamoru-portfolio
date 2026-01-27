@@ -121,6 +121,7 @@
       "action": "https://formspree.io/f/mgokkavw",
       "method": "POST",
       "privacyLabel": "プライバシーポリシーに同意します",
+      "privacyUrl": "/privacy.html",
       "hint": "内容確認後、2〜3営業日以内にご返信いたします。送信ボタンを押すとメーラーが起動します。",
       "submitLabel": "送信する",
       "directEmailLabel": "直接メールする",
