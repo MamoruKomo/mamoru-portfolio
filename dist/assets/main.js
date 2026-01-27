@@ -45,30 +45,44 @@ const timelinePolyline = document.querySelector(".timeline-polyline");
 const timelineDots = document.querySelectorAll(".timeline-dot");
 const timelineScrollbar = document.querySelector("[data-timeline-scrollbar]");
 const timelineThumb = document.querySelector(".timeline-scrollbar-thumb");
+const activityLinks = document.querySelectorAll("[data-activity-id]");
 const params = new URLSearchParams(window.location.search);
 let activeTag = params.get("tag") || "all";
 let activeYear = params.get("year");
+let activeProject = params.get("project");
 const policyCheckbox = document.querySelector("#contact-policy");
+const loadingScreen = document.querySelector("[data-loading-screen]");
 
 if (policyCheckbox && localStorage.getItem("privacyAgree") === "true") {
   policyCheckbox.checked = true;
   localStorage.removeItem("privacyAgree");
 }
 
+if (loadingScreen) {
+  window.addEventListener("load", () => {
+    setTimeout(() => {
+      loadingScreen.classList.add("is-hidden");
+    }, 500);
+  });
+}
+
 
 function applyFilters() {
   const yearLabel = activeYear ? `${activeYear}年の活動` : "";
   const tagLabel = activeTag !== "all" ? `#${activeTag}` : "";
+  const projectLabel = activeProject ? "個別表示" : "";
   if (filterStatus) {
-    const parts = [yearLabel, tagLabel].filter(Boolean);
+    const parts = [yearLabel, tagLabel, projectLabel].filter(Boolean);
     filterStatus.textContent = parts.length ? `表示中: ${parts.join(" / ")}` : "表示中: 全件";
   }
   projectCards.forEach((card) => {
     const cardYear = card.dataset.year;
     const cardTags = (card.dataset.tags || "").split(",").filter(Boolean);
+    const cardId = card.dataset.projectId;
     const matchYear = !activeYear || cardYear === activeYear;
     const matchTag = activeTag === "all" || cardTags.includes(activeTag);
-    card.style.display = matchYear && matchTag ? "grid" : "none";
+    const matchProject = !activeProject || cardId === activeProject;
+    card.style.display = matchYear && matchTag && matchProject ? "grid" : "none";
   });
   filterButtons.forEach((button) => {
     const isActive = button.dataset.filterTag === activeTag;
@@ -87,9 +101,11 @@ if (filterReset) {
   filterReset.addEventListener("click", () => {
     activeTag = "all";
     activeYear = null;
+    activeProject = null;
     applyFilters();
     const url = new URL(window.location.href);
     url.searchParams.delete("year");
+    url.searchParams.delete("project");
     history.replaceState(null, "", url.pathname + url.search + url.hash);
   });
 }
@@ -99,13 +115,39 @@ chartLinks.forEach((link) => {
     event.preventDefault();
     activeYear = link.dataset.year;
     activeTag = "all";
+    activeProject = null;
     applyFilters();
     const url = new URL(window.location.href);
     url.searchParams.set("year", activeYear);
+    url.searchParams.delete("project");
     url.hash = "process";
     history.replaceState(null, "", url.pathname + url.search + url.hash);
     if (activitiesPanel) {
       activitiesPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+});
+
+activityLinks.forEach((item) => {
+  const activate = () => {
+    activeProject = item.dataset.activityId;
+    activeYear = null;
+    activeTag = "all";
+    applyFilters();
+    const url = new URL(window.location.href);
+    url.searchParams.set("project", activeProject);
+    url.searchParams.delete("year");
+    url.hash = "process";
+    history.replaceState(null, "", url.pathname + url.search + url.hash);
+    if (activitiesPanel) {
+      activitiesPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
+  item.addEventListener("click", activate);
+  item.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      activate();
     }
   });
 });

@@ -7,12 +7,22 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
+    <div class="loading-screen" data-loading-screen>
+      <div class="loading-panel">
+        <div class="loading-title">LOADING MAMORU PORTFOLIO</div>
+        <div class="candles" aria-hidden="true">
+          <% for (let i = 0; i < 26; i += 1) { %>
+            <span class="candle"></span>
+          <% } %>
+        </div>
+      </div>
+    </div>
     <div class="grain"></div>
     <header class="topbar">
       <div class="logo">
@@ -39,6 +49,17 @@
         return { ...project, date: project.date || fallbackDate, dateValue };
       });
       const sortedProjects = normalizedProjects.slice().sort((a, b) => a.dateValue - b.dateValue);
+      const yearBuckets = [];
+      const yearMap = new Map();
+      sortedProjects.forEach((project) => {
+        const yearKey = project.year || "Unknown";
+        if (!yearMap.has(yearKey)) {
+          const yearGroup = { year: yearKey, items: [] };
+          yearMap.set(yearKey, yearGroup);
+          yearBuckets.push(yearGroup);
+        }
+        yearMap.get(yearKey).items.push(project);
+      });
       const tagSet = new Set();
       sortedProjects.forEach((project) => {
         (project.tags || []).forEach((tag) => tagSet.add(tag));
@@ -131,52 +152,27 @@
               <polyline class="timeline-polyline" fill="none"></polyline>
             </svg>
             <div class="timeline-list">
-            <% sortedProjects.forEach((project) => { %>
-              <%
-                const gainEntries = Object.entries(project.skillGains || {})
-                  .map(([name, value]) => {
-                    const numeric = Number(String(value).replace(/[^0-9.-]/g, "")) || 0;
-                    return { name, value, numeric };
-                  })
-                  .sort((a, b) => b.numeric - a.numeric)
-                  .slice(0, 3);
-                const maxGain = Math.max(1, ...gainEntries.map((entry) => entry.numeric));
-              %>
+            <% yearBuckets.forEach((bucket) => { %>
               <div class="timeline-item">
                 <div class="timeline-marker">
                   <span class="timeline-dot" aria-hidden="true"></span>
-                  <span class="timeline-year"><%= project.year %></span>
-                  <span class="timeline-ticker"><%= project.ticker || "PORT" %></span>
+                  <span class="timeline-year"><%= bucket.year %></span>
                 </div>
-                <div class="timeline-card">
-                  <div class="timeline-card-head">
-                    <h3><%= project.name %></h3>
-                    <div class="timeline-head-meta">
-                      <span class="timeline-market"><%= project.market || project.sector %></span>
-                      <% if (gainEntries.length) { %>
-                        <div class="timeline-mini" aria-label="Skill growth">
-                          <% gainEntries.forEach((entry) => { %>
-                            <div class="mini-row">
-                              <span class="mini-label"><%= entry.name %></span>
-                              <span class="mini-bar" style="--mini-width: <%= (entry.numeric / maxGain) * 100 %>%"></span>
-                              <span class="mini-value"><%= entry.value %></span>
-                            </div>
-                          <% }) %>
-                        </div>
-                      <% } %>
+                <div class="timeline-cards timeline-cards--compact">
+                  <% bucket.items.forEach((project) => { %>
+                    <div
+                      class="timeline-card timeline-card--compact"
+                      role="button"
+                      tabindex="0"
+                      data-activity-id="<%= project.id %>"
+                    >
+                      <div class="timeline-card-head">
+                        <h3><%= project.name %></h3>
+                        <span class="timeline-market"><%= project.market || project.sector %></span>
+                      </div>
                     </div>
-                  </div>
-                  <p class="timeline-thesis"><%= project.thesis %></p>
-                  <div class="timeline-metrics">
-                    <span class="timeline-impact"><%= project.result %></span>
-                    <span class="timeline-period"><%= project.period %></span>
-                  </div>
-                  <div class="timeline-tags">
-                    <% (project.skills || []).forEach((skill) => { %>
-                      <span><%= skill %></span>
-                    <% }) %>
-                  </div>
-                  <a class="chart-link" href="#process" data-year="<%= project.year %>">Activitiesを見る →</a>
+                  <% }) %>
+                  <a class="chart-link" href="#process" data-year="<%= bucket.year %>">この年のプロジェクトを見る →</a>
                 </div>
               </div>
             <% }) %>
@@ -209,55 +205,60 @@
         </div>
         <div class="project-list">
           <% sortedProjects.forEach((project) => { %>
-            <% const projectCover = project.cover || site.intro.photo || "assets/mamorudesu.jpeg"; %>
+            <%
+              const projectCover = project.cover || site.intro.photo || "assets/mamorudesu.jpeg";
+              const hasText = (value) => value && value !== "TBD";
+              const techList = (project.tech || []).filter(Boolean);
+              const tagList = (project.tags || []).filter(Boolean);
+              const metaItems = [
+                { label: "担当範囲", value: project.responsibilities },
+                { label: "役割", value: project.role },
+                { label: "使用技術", value: techList.length ? techList.join(" / ") : "" },
+                { label: "期間", value: project.period },
+                { label: "チーム規模", value: project.teamSize }
+              ].filter((item) => hasText(item.value));
+            %>
             <article
               class="project-card"
               data-project-card
               data-year="<%= project.year %>"
               data-tags="<%= (project.tags || []).join(",") %>"
+              data-project-id="<%= project.id %>"
             >
               <div class="project-media">
                 <img src="<%= projectCover %>" alt="<%= project.name %> project preview" loading="lazy" />
               </div>
               <div class="project-body">
                 <div class="project-head">
-                  <div class="project-ticker">
-                    <span class="ticker-label"><%= project.ticker || "PORT" %></span>
-                    <span class="ticker-market"><%= project.market || "Portfolio" %></span>
-                  </div>
                   <span class="project-year"><%= project.year %></span>
                 </div>
                 <h3 class="project-title"><%= project.name %></h3>
-                <p class="project-sector"><span class="meta-label">領域</span><%= project.sector %></p>
-                <p class="project-thesis"><span class="meta-label">概要</span><%= project.thesis %></p>
-                <p class="project-result"><span class="meta-label">成果</span><%= project.result %></p>
-                <div class="project-meta">
-                  <div class="meta-item">
-                    <span class="meta-key">担当範囲</span>
-                    <span class="meta-value"><%= project.responsibilities %></span>
+                <% if (hasText(project.sector) || hasText(project.market)) { %>
+                  <p class="project-sector"><span class="meta-label">領域</span><%= project.market || project.sector %></p>
+                <% } %>
+                <% if (hasText(project.thesis)) { %>
+                  <p class="project-thesis"><span class="meta-label">概要</span><%= project.thesis %></p>
+                <% } %>
+                <% if (hasText(project.result)) { %>
+                  <p class="project-result"><span class="meta-label">成果</span><%= project.result %></p>
+                <% } %>
+                <% if (metaItems.length) { %>
+                  <div class="project-meta">
+                    <% metaItems.forEach((item) => { %>
+                      <div class="meta-item">
+                        <span class="meta-key"><%= item.label %></span>
+                        <span class="meta-value"><%= item.value %></span>
+                      </div>
+                    <% }) %>
                   </div>
-                  <div class="meta-item">
-                    <span class="meta-key">役割</span>
-                    <span class="meta-value"><%= project.role %></span>
+                <% } %>
+                <% if (tagList.length) { %>
+                  <div class="project-tags">
+                    <% tagList.forEach((tag) => { %>
+                      <span>#<%= tag %></span>
+                    <% }) %>
                   </div>
-                  <div class="meta-item">
-                    <span class="meta-key">使用技術</span>
-                    <span class="meta-value"><%= (project.tech || []).join(" / ") %></span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-key">期間</span>
-                    <span class="meta-value"><%= project.period %></span>
-                  </div>
-                  <div class="meta-item">
-                    <span class="meta-key">チーム規模</span>
-                    <span class="meta-value"><%= project.teamSize %></span>
-                  </div>
-                </div>
-                <div class="project-tags">
-                  <% (project.tags || []).forEach((tag) => { %>
-                    <span>#<%= tag %></span>
-                  <% }) %>
-                </div>
+                <% } %>
               </div>
             </article>
           <% }) %>

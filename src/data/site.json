@@ -31,27 +31,59 @@
       "repeat": 4,
       "items": [
         {
-          "text": "NASDAQ / Portfolio Index",
+          "text": "UX DESIGN",
           "tone": "base"
         },
         {
-          "text": "+2.4%",
+          "text": "+32%",
           "tone": "gain"
         },
         {
-          "text": "YTD: +18.7%",
-          "tone": "gain"
-        },
-        {
-          "text": "ROI +141%",
-          "tone": "gain"
-        },
-        {
-          "text": "Volatility: 0.62",
+          "text": "EXECUTION",
           "tone": "base"
         },
         {
-          "text": "Momentum: High",
+          "text": "+45%",
+          "tone": "gain"
+        },
+        {
+          "text": "SALES",
+          "tone": "base"
+        },
+        {
+          "text": "+28%",
+          "tone": "gain"
+        },
+        {
+          "text": "CODING",
+          "tone": "base"
+        },
+        {
+          "text": "+36%",
+          "tone": "gain"
+        },
+        {
+          "text": "RESEARCH",
+          "tone": "base"
+        },
+        {
+          "text": "+30%",
+          "tone": "gain"
+        },
+        {
+          "text": "STRATEGY",
+          "tone": "base"
+        },
+        {
+          "text": "+25%",
+          "tone": "gain"
+        },
+        {
+          "text": "DELIVERY",
+          "tone": "base"
+        },
+        {
+          "text": "+40%",
           "tone": "gain"
         }
       ]
