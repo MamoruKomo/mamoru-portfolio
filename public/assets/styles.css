@@ -1248,6 +1248,14 @@ body {
   color: var(--muted);
 }
 
+.project-tags span {
+  padding: 3px 8px;
+  border-radius: 999px;
+  background: rgba(60, 199, 255, 0.1);
+  border: 1px solid rgba(60, 199, 255, 0.28);
+  color: var(--accent-2);
+}
+
 .contact {
   grid-template-rows: auto 1fr;
 }

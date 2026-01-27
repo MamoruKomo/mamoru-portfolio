@@ -7,6 +7,7 @@ const root = process.cwd();
 const srcDir = path.join(root, "src");
 const distDir = path.join(root, "dist");
 const docsDir = path.join(root, "docs");
+const outputDir = docsDir;
 const publicDir = path.join(root, "public");
 const args = new Set(process.argv.slice(2));
 const enableServe = args.has("--serve");
@@ -48,15 +49,15 @@ function render() {
   const templates = [
     {
       templatePath: path.join(srcDir, "index.ejs"),
-      outputPath: path.join(distDir, "index.html")
+      outputPath: path.join(outputDir, "index.html")
     },
     {
       templatePath: path.join(srcDir, "privacy.ejs"),
-      outputPath: path.join(distDir, "privacy.html")
+      outputPath: path.join(outputDir, "privacy.html")
     }
   ];
 
-  ensureDir(distDir);
+  ensureDir(outputDir);
   templates.forEach(({ templatePath, outputPath }) => {
     const template = fs.readFileSync(templatePath, "utf8");
     const html = ejs.render(template, data, {
@@ -66,10 +67,9 @@ function render() {
     fs.writeFileSync(outputPath, html);
   });
   if (fs.existsSync(publicDir)) {
-    copyDir(publicDir, distDir);
+    copyDir(publicDir, outputDir);
   }
-  fs.rmSync(docsDir, { recursive: true, force: true });
-  copyDir(distDir, docsDir);
+  fs.rmSync(distDir, { recursive: true, force: true });
 }
 
 const reloadClients = new Set();
@@ -100,8 +100,8 @@ function serve() {
     }
 
     const requestedPath = requestUrl.pathname === "/" ? "/index.html" : requestUrl.pathname;
-    let filePath = path.join(distDir, requestedPath);
-    if (!filePath.startsWith(distDir)) {
+    let filePath = path.join(outputDir, requestedPath);
+    if (!filePath.startsWith(outputDir)) {
       res.writeHead(403);
       res.end();
       return;
