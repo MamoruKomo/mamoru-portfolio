@@ -485,15 +485,15 @@ body {
   white-space: nowrap;
   animation: ticker 18s linear infinite;
   font-family: "Noto Sans JP", sans-serif;
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: 14px;
+  line-height: 1.8;
   color: var(--muted);
 }
 
 .ticker-line {
   display: flex;
   gap: 26px;
-  padding: 12px 40px;
+  padding: 18px 40px 12px;
   align-items: center;
 }
 
@@ -727,6 +727,22 @@ body {
 
 .timeline-card--compact h3 {
   font-size: 0.98rem;
+}
+
+.timeline-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 8px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.timeline-skills span {
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(60, 199, 255, 0.1);
+  border: 1px solid rgba(60, 199, 255, 0.28);
+  color: var(--accent-2);
 }
 
 .timeline-card--compact[role="button"] {
@@ -1103,6 +1119,7 @@ body {
   border: 1px solid rgba(60, 199, 255, 0.28);
   color: var(--accent-2);
 }
+
 
 .project-gallery {
   display: grid;

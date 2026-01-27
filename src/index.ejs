@@ -170,6 +170,13 @@
                         <h3><%= project.name %></h3>
                         <span class="timeline-market"><%= project.market || project.sector %></span>
                       </div>
+                      <% if ((project.skills || []).length) { %>
+                        <div class="timeline-skills">
+                          <% (project.skills || []).forEach((skill) => { %>
+                            <span><%= skill %></span>
+                          <% }) %>
+                        </div>
+                      <% } %>
                     </div>
                   <% }) %>
                   <a class="chart-link" href="#process" data-year="<%= bucket.year %>">この年のプロジェクトを見る →</a>
@@ -236,25 +243,19 @@
                   <% if ((project.skills || []).length) { %>
                     <div class="project-skills">
                       <% (project.skills || []).forEach((skill) => { %>
-                        <span><%= skill %></span>
+                        <span>#<%= skill %></span>
                       <% }) %>
                     </div>
                   <% } %>
                 </div>
               </button>
               <div class="project-details">
-                <div class="project-head">
-                  <span class="project-year"><%= project.year %></span>
-                </div>
                 <% if (projectImages.length) { %>
                   <div class="project-gallery">
                     <% projectImages.forEach((image) => { %>
                       <img src="<%= image %>" alt="<%= project.name %> detail" loading="lazy" />
                     <% }) %>
                   </div>
-                <% } %>
-                <% if (hasText(project.sector) || hasText(project.market)) { %>
-                  <p class="project-sector"><span class="meta-label">領域</span><%= project.market || project.sector %></p>
                 <% } %>
                 <% if (hasText(project.thesis)) { %>
                   <p class="project-thesis"><span class="meta-label">概要</span><%= project.thesis %></p>
@@ -269,13 +270,6 @@
                         <span class="meta-key"><%= item.label %></span>
                         <span class="meta-value"><%= item.value %></span>
                       </div>
-                    <% }) %>
-                  </div>
-                <% } %>
-                <% if (tagList.length) { %>
-                  <div class="project-tags">
-                    <% tagList.forEach((tag) => { %>
-                      <span>#<%= tag %></span>
                     <% }) %>
                   </div>
                 <% } %>
