@@ -5,7 +5,6 @@ import http from "http";
 
 const root = process.cwd();
 const srcDir = path.join(root, "src");
-const distDir = path.join(root, "dist");
 const docsDir = path.join(root, "docs");
 const outputDir = docsDir;
 const publicDir = path.join(root, "public");
@@ -57,19 +56,19 @@ function render() {
     }
   ];
 
+  fs.rmSync(outputDir, { recursive: true, force: true });
   ensureDir(outputDir);
   templates.forEach(({ templatePath, outputPath }) => {
     const template = fs.readFileSync(templatePath, "utf8");
     const html = ejs.render(template, data, {
       filename: templatePath
-    });
+    }).replace(/[ \t]+$/gm, "");
     ensureDir(path.dirname(outputPath));
     fs.writeFileSync(outputPath, html);
   });
   if (fs.existsSync(publicDir)) {
     copyDir(publicDir, outputDir);
   }
-  fs.rmSync(distDir, { recursive: true, force: true });
 }
 
 const reloadClients = new Set();

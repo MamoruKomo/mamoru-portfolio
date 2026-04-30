@@ -7,12 +7,16 @@
       "market": "Personal",
       "name": "comora",
       "sector": "Activity",
-      "thesis": "周りが高専に入学し動き始める中、何かできることはないかと思い始めたcomora。気づけば町民と話すのが楽しくて今は趣味になりました。",
-      "result": " コミュニケーション力+ / チャレンジ精神+ / ビジネス力+",
+      "thesis": "神山町での出店活動を通じて、地域の人と直接話しながら小さな事業を立ち上げ、運営まで継続しています。",
+      "result": "企画、仕入れ、販売、接客、改善を一貫して経験し、地域接点を持つ小規模事業運営の基礎を習得。",
       "height": 76,
       "role": "経営者兼わたあめ販売",
       "responsibilities": "起業、出店準備・運営、町民とのコミュニケーション、接客・販売",
-      "tech": [],
+      "tech": [
+        "接客",
+        "販売計画",
+        "店舗運営"
+      ],
       "period": "2023.05 - Now",
       "teamSize": "3名",
       "skills": [
@@ -28,10 +32,10 @@
       ],
       "skillGains": {},
       "year": "2023",
-      "cover": "assets/comora3.png",
+      "cover": "assets/images/projects/comora-cover.jpg",
       "images": [
-        "assets/comora2.jpg",
-        "assets/comora.jpeg"
+        "assets/images/projects/comora-01.jpg",
+        "assets/images/projects/comora-02.jpg"
       ]
     },
     {
@@ -40,19 +44,31 @@
       "market": "Personal",
       "name": "Twogate DevCamp",
       "sector": "Activity",
-      "thesis": "TBD",
-      "result": "TBD",
+      "thesis": "短期開発プログラムに参加し、限られた時間の中で課題設定からプロトタイプ制作までを実践しました。",
+      "result": "開発プロセス、チームでの役割分担、アウトプットまでのスピード感を学び、実装経験を強化。",
       "height": 72,
-      "role": "TBD",
-      "responsibilities": "TBD",
-      "tech": [],
-      "period": "2024.00 - Now",
-      "teamSize": "TBD",
-      "skills": [],
-      "tags": [],
+      "role": "参加者 / プロトタイプ制作",
+      "responsibilities": "課題整理、アイデア検討、UI検討、実装補助、発表準備",
+      "tech": [
+        "Web",
+        "UI Design",
+        "Prototyping"
+      ],
+      "period": "2024",
+      "teamSize": "チーム開発",
+      "skills": [
+        "Engineering",
+        "Prototyping",
+        "Teamwork"
+      ],
+      "tags": [
+        "Engineering",
+        "Prototyping",
+        "Teamwork"
+      ],
       "skillGains": {},
       "year": "2024",
-      "cover":"assets/twogate2024.jpg"
+      "cover": "assets/images/projects/twogate-devcamp-2024.jpg"
     },
     {
       "id": "frc-sales-2024",
@@ -60,19 +76,31 @@
       "market": "Personal",
       "name": "FRC営業",
       "sector": "Activity",
-      "thesis": "TBD",
-      "result": "TBD",
+      "thesis": "FRC関連の営業活動として、相手の課題を聞き取りながら提案内容を組み立てる経験を積みました。",
+      "result": "初対面の相手に価値を伝える力、提案前の準備、関係構築の重要性を実践で習得。",
       "height": 60,
-      "role": "TBD",
-      "responsibilities": "TBD",
-      "tech": [],
-      "period": "2024.00 - Now",
-      "teamSize": "TBD",
-      "skills": [],
-      "tags": [],
+      "role": "営業 / 提案担当",
+      "responsibilities": "営業先の整理、提案準備、コミュニケーション、活動記録",
+      "tech": [
+        "Sales",
+        "Communication",
+        "Documentation"
+      ],
+      "period": "2024",
+      "teamSize": "チーム活動",
+      "skills": [
+        "Sales",
+        "Communication",
+        "Planning"
+      ],
+      "tags": [
+        "Sales",
+        "Communication",
+        "Planning"
+      ],
       "skillGains": {},
       "year": "2024",
-      "cover":"assets/9494hanabi.jpg"
+      "cover": "assets/images/projects/frc-sales-2024.jpg"
     },
     {
       "id": "kosen-procon-2024",
@@ -80,39 +108,63 @@
       "market": "Personal",
       "name": "高専プログラミングコンテスト",
       "sector": "Activity",
-      "thesis": "TBD",
-      "result": "TBD",
+      "thesis": "高専プログラミングコンテストに向けて、課題に対するアイデア検討と制作を進めました。",
+      "result": "チームでの開発計画、技術調査、ユーザーに伝わる成果物づくりの経験を獲得。",
       "height": 64,
-      "role": "TBD",
-      "responsibilities": "TBD",
-      "tech": [],
-      "period": "2024.00 - Now",
-      "teamSize": "TBD",
-      "skills": [],
-      "tags": [],
+      "role": "企画 / 開発メンバー",
+      "responsibilities": "課題設定、プロトタイプ制作、UI検討、発表資料の整理",
+      "tech": [
+        "Programming",
+        "UI Design",
+        "Presentation"
+      ],
+      "period": "2024",
+      "teamSize": "チーム開発",
+      "skills": [
+        "Engineering",
+        "Design",
+        "Presentation"
+      ],
+      "tags": [
+        "Engineering",
+        "Design",
+        "Competition"
+      ],
       "skillGains": {},
       "year": "2024",
-      "cover":"assets/2024procon.jpg"
+      "cover": "assets/images/projects/kosen-procon-2024.jpg"
     },
     {
       "id": "stocks-2024",
       "ticker": "STCK",
       "market": "Personal",
-      "name": "株",
+      "name": "株式分析",
       "sector": "Activity",
-      "thesis": "TBD",
-      "result": "TBD",
+      "thesis": "株式市場を観察し、企業情報、ニュース、価格変動を読み解く習慣を通じて事業理解を深めています。",
+      "result": "数字と仮説から状況を考える力を養い、事業・市場・ユーザーの関係を分析する視点を強化。",
       "height": 52,
-      "role": "TBD",
-      "responsibilities": "TBD",
-      "tech": [],
-      "period": "2024.00 - Now",
-      "teamSize": "TBD",
-      "skills": [],
-      "tags": [],
+      "role": "個人研究",
+      "responsibilities": "市場観察、企業調査、ニュース整理、仮説検証",
+      "tech": [
+        "Research",
+        "Market Analysis",
+        "Financial Literacy"
+      ],
+      "period": "2024 - Now",
+      "teamSize": "個人",
+      "skills": [
+        "Research",
+        "Strategy",
+        "Analysis"
+      ],
+      "tags": [
+        "Research",
+        "Strategy",
+        "Analysis"
+      ],
       "skillGains": {},
       "year": "2024",
-      "cover":"assets/kabu.png"
+      "cover": "assets/images/projects/stock-analysis-2024.jpg"
     },
     {
       "id": "kosen-procon-2025",
@@ -120,19 +172,31 @@
       "market": "Personal",
       "name": "高専プログラミングコンテスト",
       "sector": "Activity",
-      "thesis": "TBD",
-      "result": "TBD",
+      "thesis": "前年の経験をもとに、高専プログラミングコンテストへ継続して挑戦し、より伝わる企画と実装を目指しました。",
+      "result": "制作の進め方、役割分担、改善サイクルを見直し、継続開発に必要な判断力を強化。",
       "height": 66,
-      "role": "TBD",
-      "responsibilities": "TBD",
-      "tech": [],
-      "period": "2025.00 - Now",
-      "teamSize": "TBD",
-      "skills": [],
-      "tags": [],
+      "role": "企画 / 開発メンバー",
+      "responsibilities": "ユーザー体験の整理、機能検討、プロトタイプ改善、発表準備",
+      "tech": [
+        "Programming",
+        "UX Design",
+        "Prototyping"
+      ],
+      "period": "2025",
+      "teamSize": "チーム開発",
+      "skills": [
+        "Engineering",
+        "UX Design",
+        "Iteration"
+      ],
+      "tags": [
+        "Engineering",
+        "UX Design",
+        "Competition"
+      ],
       "skillGains": {},
       "year": "2025",
-      "cover":"assets/2025procon.jpg"
+      "cover": "assets/images/projects/kosen-procon-2025.jpg"
     },
     {
       "id": "entrepreneur-koshien-2025",
@@ -140,39 +204,63 @@
       "market": "Personal",
       "name": "起業家甲子園",
       "sector": "Activity",
-      "thesis": "TBD",
-      "result": "TBD",
+      "thesis": "起業家甲子園に向けて、事業アイデアをユーザー課題、提供価値、実現方法の観点から磨き込みました。",
+      "result": "ビジネスモデル、ピッチ構成、聞き手に伝わるストーリー設計の経験を獲得。",
       "height": 74,
-      "role": "TBD",
-      "responsibilities": "TBD",
-      "tech": [],
-      "period": "2025.00 - Now",
-      "teamSize": "TBD",
-      "skills": [],
-      "tags": [],
+      "role": "事業企画 / ピッチ制作",
+      "responsibilities": "課題仮説、提供価値の整理、資料作成、発表練習",
+      "tech": [
+        "Business Design",
+        "Pitch",
+        "Research"
+      ],
+      "period": "2025",
+      "teamSize": "チーム活動",
+      "skills": [
+        "Entrepreneurship",
+        "Strategy",
+        "Presentation"
+      ],
+      "tags": [
+        "Entrepreneurship",
+        "Strategy",
+        "Presentation"
+      ],
       "skillGains": {},
       "year": "2025",
-      "cover":"assets/kigyouka.jpg"
+      "cover": "assets/images/projects/entrepreneur-koshien-2025.jpg"
     },
     {
       "id": "dcon-2026",
       "ticker": "DCON",
       "market": "Personal",
-      "name": "Dcon",
+      "name": "DCON",
       "sector": "Activity",
-      "thesis": "TBD",
-      "result": "TBD",
+      "thesis": "DCONに向けて、技術と事業性の両面からアイデアを検討し、社会実装を意識した企画づくりに取り組んでいます。",
+      "result": "技術検証、事業仮説、チームでの意思決定を結びつけるプロジェクト設計力を強化中。",
       "height": 80,
-      "role": "TBD",
-      "responsibilities": "TBD",
-      "tech": [],
-      "period": "2026.00 - Now",
-      "teamSize": "TBD",
-      "skills": [],
-      "tags": [],
+      "role": "企画 / 技術検証",
+      "responsibilities": "課題調査、技術検証、事業性の整理、発表準備",
+      "tech": [
+        "AI",
+        "Business Design",
+        "Prototyping"
+      ],
+      "period": "2026",
+      "teamSize": "チーム活動",
+      "skills": [
+        "AI",
+        "Business Design",
+        "Prototyping"
+      ],
+      "tags": [
+        "AI",
+        "Business Design",
+        "Competition"
+      ],
       "skillGains": {},
       "year": "2026",
-      "cover":"assets/Dcon2026.JPG"
+      "cover": "assets/images/projects/dcon-2026.jpg"
     }
   ]
 }

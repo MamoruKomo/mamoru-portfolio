@@ -28,7 +28,7 @@
   "ui": {
     "scrollHint": "Scroll ↓",
     "ticker": {
-      "repeat": 4,
+      "repeat": 2,
       "items": [
         {
           "text": "UX DESIGN",
@@ -92,7 +92,7 @@
   "sections": {
     "profile": {
       "title": "Profile",
-      "subtitle": "自己紹介とSNSリンクをまとめています。"
+      "subtitle": "企画・デザイン・実装・営業を横断して動く学生です。"
     },
     "timeline": {
       "title": "Timeline Chart",
@@ -100,7 +100,7 @@
     },
     "activities": {
       "title": "Activities",
-      "subtitle": "株式市場の動きのように、プロジェクトもコンテキストと数値で読み解く設計者です。"
+      "subtitle": "活動ごとの役割、担当範囲、得た成果を採用目線で整理しています。"
     },
     "contact": {
       "title": "Contact",
@@ -117,8 +117,8 @@
     "photo": "assets/mamorudesu.jpeg",
     "age": "18",
     "affiliation": "神山まるごと高専 / Tokushima",
-    "headline": "市場の波を読み、体験価値を設計します。",
-    "valueProposition": "ユーザー理解と事業目線をつなぎ、継続的に価値を伸ばす設計を行います。",
+    "headline": "企画、UI設計、実装、営業まで一気通貫で動きます。",
+    "valueProposition": "ユーザー理解と事業視点をつなぎ、現場で試しながら価値を形にすることが強みです。",
     "skills": [
       "デザイン",
       "エンジニアリング",
@@ -153,8 +153,8 @@
       "action": "https://formspree.io/f/mgokkavw",
       "method": "POST",
       "privacyLabel": "プライバシーポリシーに同意します",
-      "privacyUrl": "/privacy.html",
-      "hint": "内容確認後、2〜3営業日以内にご返信いたします。送信ボタンを押すとメーラーが起動します。",
+      "privacyUrl": "privacy.html",
+      "hint": "フォーム送信後、内容を確認して2〜3営業日以内にご返信いたします。",
       "submitLabel": "送信する",
       "directEmailLabel": "直接メールする",
       "rows": [
@@ -164,9 +164,6 @@
         ],
         [
           "company"
-        ],
-        [
-          "address"
         ],
         [
           "email"
@@ -203,14 +200,6 @@
           "autocomplete": "organization",
           "maxlength": 80,
           "placeholder": "株式会社サンプル"
-        },
-        "address": {
-          "label": "住所",
-          "type": "text",
-          "name": "address",
-          "autocomplete": "street-address",
-          "maxlength": 120,
-          "placeholder": "東京都渋谷区..."
         },
         "email": {
           "label": "メールアドレス",

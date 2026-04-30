@@ -278,7 +278,7 @@ async function main() {
 
   execSync("git config user.name \"github-actions[bot]\"");
   execSync("git config user.email \"41898282+github-actions[bot]@users.noreply.github.com\"");
-  execSync("git add src/data/site.json src/data/projects.json dist/index.html dist/assets/styles.css dist/assets/main.js");
+  execSync("git add src/data/site.json src/data/projects.json docs");
   execSync(`git commit -m "cms: update via issue #${issueNumber}"`);
   execSync("git push");
 

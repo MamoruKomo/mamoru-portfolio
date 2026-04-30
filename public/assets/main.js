@@ -52,21 +52,11 @@ let activeTag = params.get("tag") || "all";
 let activeYear = params.get("year");
 let activeProject = params.get("project");
 const policyCheckbox = document.querySelector("#contact-policy");
-const loadingScreen = document.querySelector("[data-loading-screen]");
 
 if (policyCheckbox && localStorage.getItem("privacyAgree") === "true") {
   policyCheckbox.checked = true;
   localStorage.removeItem("privacyAgree");
 }
-
-if (loadingScreen) {
-  window.addEventListener("load", () => {
-    setTimeout(() => {
-      loadingScreen.classList.add("is-hidden");
-    }, 500);
-  });
-}
-
 
 function applyFilters() {
   const yearLabel = activeYear ? `${activeYear}年の活動` : "";

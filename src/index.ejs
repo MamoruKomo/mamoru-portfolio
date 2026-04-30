@@ -1,28 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%= site.meta.name %> | <%= site.meta.title %></title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="assets/styles.css" />
   </head>
   <body>
-    <div class="loading-screen" data-loading-screen>
-      <div class="loading-panel">
-        <div class="loading-title">LOADING MAMORU PORTFOLIO</div>
-        <div class="candles" aria-hidden="true">
-          <% for (let i = 0; i < 26; i += 1) { %>
-            <span class="candle"></span>
-          <% } %>
-        </div>
-      </div>
-    </div>
     <div class="grain"></div>
     <header class="topbar">
       <div class="logo">
@@ -82,8 +66,6 @@
       </div>
     </main>
 
-    <div class="scroll-hint"><%= site.ui.scrollHint %></div>
-
     <section class="panels" id="panels">
       <article class="panel intro" data-panel="intro">
         <div class="panel-header">
@@ -93,7 +75,7 @@
         <div class="intro-card">
           <div class="intro-photo">
             <% if (site.intro.photo) { %>
-              <img src="<%= site.intro.photo %>" alt="<%= site.meta.name %> profile" />
+              <img src="<%= site.intro.photo %>" alt="<%= site.meta.name %> profile" width="360" height="480" />
             <% } else { %>
               <div class="photo-placeholder">No Image</div>
             <% } %>
@@ -214,7 +196,7 @@
             <%
               const projectCover = project.cover || site.intro.photo || "assets/mamorudesu.jpeg";
               const projectImages = (project.images || []).filter(Boolean);
-              const hasText = (value) => value && value !== "TBD";
+              const hasText = (value) => Boolean(value);
               const techList = (project.tech || []).filter(Boolean);
               const tagList = (project.tags || []).filter(Boolean);
               const metaItems = [
@@ -234,7 +216,7 @@
             >
               <button class="project-summary" type="button" data-project-toggle>
                 <div class="project-media">
-                  <img src="<%= projectCover %>" alt="<%= project.name %> project preview" loading="lazy" />
+                  <img src="<%= projectCover %>" alt="<%= project.name %> project preview" loading="lazy" width="640" height="480" />
                 </div>
                 <div class="project-body">
                   <span class="project-summary-year"><%= project.year %></span>
@@ -252,7 +234,7 @@
                 <% if (projectImages.length) { %>
                   <div class="project-gallery">
                     <% projectImages.forEach((image) => { %>
-                      <img src="<%= image %>" alt="<%= project.name %> detail" loading="lazy" />
+                      <img src="<%= image %>" alt="<%= project.name %> detail" loading="lazy" width="640" height="480" />
                     <% }) %>
                   </div>
                 <% } %>
