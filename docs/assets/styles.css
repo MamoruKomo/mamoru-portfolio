@@ -171,6 +171,79 @@ body {
   z-index: 1;
 }
 
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #07090d;
+  color: var(--text);
+  transition: opacity 0.42s ease, visibility 0.42s ease;
+}
+
+.boot-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 48% 42%, rgba(60, 199, 255, 0.2), transparent 28%),
+    linear-gradient(140deg, rgba(60, 255, 133, 0.14), transparent 36%),
+    linear-gradient(320deg, rgba(255, 255, 255, 0.1), transparent 30%);
+  opacity: 0.9;
+}
+
+.boot-screen.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.boot-grid {
+  position: absolute;
+  inset: -1px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(circle, #000 0%, transparent 72%);
+  animation: bootGrid 1.8s ease-in-out infinite alternate;
+}
+
+.boot-content {
+  position: relative;
+  width: min(420px, calc(100% - 48px));
+  display: grid;
+  gap: 16px;
+}
+
+.boot-kicker {
+  color: var(--muted);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.boot-content strong {
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+}
+
+.boot-meter {
+  height: 3px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.boot-meter span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2), #ffffff);
+  transform-origin: left;
+  animation: bootMeter 0.92s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
 .topbar {
   position: fixed;
   top: 0;
@@ -1208,6 +1281,38 @@ select.form-input:focus {
   }
   to {
     transform: translateX(-50%);
+  }
+}
+
+@keyframes bootMeter {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes bootGrid {
+  from {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.45;
+  }
+  to {
+    transform: translate3d(-18px, -18px, 0);
+    opacity: 0.8;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker,
+  .boot-grid,
+  .boot-meter span {
+    animation: none;
+  }
+
+  .boot-meter span {
+    transform: scaleX(1);
   }
 }
 

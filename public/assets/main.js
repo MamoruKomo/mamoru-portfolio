@@ -1,3 +1,30 @@
+const bootScreen = document.querySelector("[data-boot-screen]");
+
+if (bootScreen) {
+  const bootStart = performance.now();
+  let isBootClosed = false;
+
+  const closeBootScreen = () => {
+    if (isBootClosed) return;
+    isBootClosed = true;
+    bootScreen.classList.add("is-hidden");
+    window.setTimeout(() => bootScreen.remove(), 520);
+  };
+
+  const scheduleBootClose = () => {
+    const elapsed = performance.now() - bootStart;
+    window.setTimeout(closeBootScreen, Math.max(120, 680 - elapsed));
+  };
+
+  if (document.readyState === "complete") {
+    scheduleBootClose();
+  } else {
+    window.addEventListener("load", scheduleBootClose, { once: true });
+  }
+
+  window.setTimeout(closeBootScreen, 1800);
+}
+
 const navLinks = document.querySelectorAll(".nav-link");
 const panelItems = document.querySelectorAll("[data-panel]");
 
